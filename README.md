@@ -96,13 +96,38 @@ The current test run passes 59 integration tests and 2 UI scenarios. They cover 
 
 Manual verification is still needed for Korean IME composition, the full VoiceOver flow, and recovery after disconnecting an external drive. Release builds contain both arm64 and x86_64 binaries, but execution on macOS 14 and Intel hardware has not yet been verified.
 
-## Release package
+## CI and releases
+
+Pushing to `main` or opening a pull request against it starts [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml). It builds the app, runs integration tests and static analysis, checks the string catalog, tests the packaging script, and builds a Release ZIP. Test results are available as workflow artifacts.
+
+The workflows use GitHub's `xcode-27` public preview runner with Xcode 27.0. UI tests and the 30-minute output soak test remain local checks you can run when needed.
+
+To release a version, tag the commit you want to ship and push the tag:
+
+```sh
+git tag v0.2.1
+git push origin v0.2.1
+```
+
+The [Release](https://github.com/jeonjw85/CannyGit/actions/workflows/release.yml) workflow verifies the tagged source, builds a universal app, and publishes a GitHub Release with the ZIP and a SHA-256 checksum. It uses the built-in `GITHUB_TOKEN`; no separate token is needed.
+
+Tags must follow `vMAJOR.MINOR.PATCH`, such as `v0.2.1`. The tag supplies the app version and ZIP filename, so you don't need to update the Xcode project's version before each release. The Release workflow's run number becomes the build number. Failed checks or builds prevent publication.
+
+Automated releases currently use ad-hoc signing. They are not Developer ID signed or notarized by Apple, so macOS may block the app when first opened.
+
+### Package locally
 
 ```sh
 bash Scripts/package-release.sh
 ```
 
-This builds the Release app and creates `Artifacts/CannyGit-<version>-macOS.zip`. The default uses an ad-hoc signature for local use. Developer ID signing and notarization for public distribution have not been completed yet.
+This builds the Release app and creates `Artifacts/CannyGit-<version>-macOS.zip` and its `.zip.sha256` file. Without an explicit version, it uses the version in the Xcode project.
+
+```sh
+RELEASE_VERSION=0.2.1 BUILD_NUMBER=3 bash Scripts/package-release.sh
+```
+
+Set `DERIVED_DATA_PATH` and `OUTPUT_DIR` to change the build and output directories. If your local keychain already has a distribution certificate and a notarization profile, you can set `DEVELOPER_ID_APPLICATION` and `NOTARY_PROFILE` to sign and notarize the app. The GitHub workflows are not configured to use those credentials.
 
 ## Source layout
 

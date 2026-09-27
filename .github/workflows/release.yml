@@ -1,0 +1,106 @@
+name: Release
+
+on:
+  push:
+    tags: ['v[0-9]*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  version:
+    name: Validate version tag
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Read version
+        id: version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            printf '::error::Release tags must use vMAJOR.MINOR.PATCH, for example v0.2.1.\n'
+            exit 1
+          fi
+          printf 'version=%s\n' "${RELEASE_TAG#v}" >> "$GITHUB_OUTPUT"
+
+  verify:
+    name: Verify tagged source
+    needs: version
+    uses: ./.github/workflows/ci.yml
+
+  package:
+    name: Package universal macOS app
+    needs: [version, verify]
+    runs-on: xcode-27
+    timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_27.0.app/Contents/Developer
+      RELEASE_VERSION: ${{ needs.version.outputs.version }}
+      BUILD_NUMBER: ${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Prepare Xcode
+        run: |
+          xcodebuild -version
+          if ! xcrun metal -v >/dev/null 2>&1; then
+            xcodebuild -downloadComponent MetalToolchain
+          fi
+          xcrun metal -v
+
+      - name: Build release package
+        run: bash Scripts/package-release.sh
+
+      - name: Upload release files
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: release-files
+          path: |
+            Artifacts/CannyGit-${{ needs.version.outputs.version }}-macOS.zip
+            Artifacts/CannyGit-${{ needs.version.outputs.version }}-macOS.zip.sha256
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+
+  publish:
+    name: Publish GitHub Release
+    needs: [version, package]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: release-files
+          path: Artifacts
+
+      - name: Verify archive checksum
+        working-directory: Artifacts
+        env:
+          RELEASE_VERSION: ${{ needs.version.outputs.version }}
+        run: sha256sum --check "CannyGit-$RELEASE_VERSION-macOS.zip.sha256"
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          RELEASE_VERSION: ${{ needs.version.outputs.version }}
+        run: |
+          archive="Artifacts/CannyGit-$RELEASE_VERSION-macOS.zip"
+          gh release create "$RELEASE_TAG" "$archive" "$archive.sha256" \
+            --repo "$GITHUB_REPOSITORY" \
+            --verify-tag \
+            --title "CannyGit $RELEASE_TAG" \
+            --generate-notes \
+            --notes 'Requires macOS 14 or later. Includes Apple Silicon and Intel binaries. This build is ad-hoc signed and is not notarized by Apple. macOS may block it when first opened.'

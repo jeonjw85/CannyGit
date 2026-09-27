@@ -96,13 +96,38 @@ xcodebuild -project CannyGit.xcodeproj \
 
 실제 한글 IME 조합, VoiceOver 전체 흐름, 외장 디스크를 분리한 뒤 다시 연결했을 때의 동작은 수동 검증이 남아 있습니다. Release는 arm64/x86_64 universal 바이너리로 빌드되지만 macOS 14와 Intel 실기기에서의 실행은 아직 확인하지 않았습니다.
 
-## Release 패키지
+## CI와 릴리스
+
+`main`에 푸시하거나 `main`을 대상으로 PR을 열면 [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml)가 실행됩니다. Xcode 빌드와 통합 테스트, 정적 분석, 문자열 카탈로그 검사, 패키징 스크립트 테스트를 수행하고 Release ZIP도 만들어 봅니다. 테스트 결과는 Actions 실행 화면에서 내려받을 수 있습니다.
+
+러너는 GitHub의 `xcode-27` 공개 프리뷰 이미지이며 Xcode 27.0을 사용합니다. UI 테스트와 30분 출력 시험은 로컬에서 필요할 때 실행합니다.
+
+배포할 때는 원하는 커밋에 버전 태그를 붙여 푸시하세요.
+
+```sh
+git tag v0.2.1
+git push origin v0.2.1
+```
+
+[Release](https://github.com/jeonjw85/CannyGit/actions/workflows/release.yml) 워크플로가 태그의 코드를 다시 검증한 뒤 universal 앱을 빌드합니다. 성공하면 GitHub Release를 만들고 ZIP과 SHA-256 체크섬을 첨부합니다. 별도의 토큰을 등록할 필요 없이 기본 `GITHUB_TOKEN`을 사용합니다.
+
+태그는 `v0.2.1`처럼 `vMAJOR.MINOR.PATCH` 형식을 사용합니다. 앱 버전과 ZIP 파일명에는 태그의 버전이 반영되므로 배포 전에 Xcode 프로젝트의 버전을 따로 바꿀 필요는 없습니다. 빌드 번호는 Release 워크플로의 실행 번호를 사용합니다. 검증이나 빌드가 실패하면 릴리스를 발행하지 않습니다.
+
+현재 자동 배포는 ad-hoc 서명을 사용합니다. Developer ID 서명과 Apple 공증을 거친 앱이 아니므로 처음 열 때 macOS에서 실행을 차단할 수 있습니다.
+
+### 로컬에서 패키지 만들기
 
 ```sh
 bash Scripts/package-release.sh
 ```
 
-Release 앱을 빌드하고 `Artifacts/CannyGit-<버전>-macOS.zip`을 만듭니다. 기본값은 로컬 실행용 ad-hoc 서명입니다. 공개 배포용 Developer ID 서명과 공증은 하지 않았습니다.
+Release 앱을 빌드하고 `Artifacts/CannyGit-<버전>-macOS.zip`과 `.zip.sha256` 파일을 만듭니다. 버전을 지정하지 않으면 Xcode 프로젝트의 버전을 사용합니다.
+
+```sh
+RELEASE_VERSION=0.2.1 BUILD_NUMBER=3 bash Scripts/package-release.sh
+```
+
+`DERIVED_DATA_PATH`와 `OUTPUT_DIR`로 빌드 폴더와 출력 폴더를 바꿀 수 있습니다. 로컬 키체인에 배포 인증서와 공증 프로필이 준비되어 있다면 `DEVELOPER_ID_APPLICATION`과 `NOTARY_PROFILE`을 지정해 서명과 공증도 실행할 수 있습니다. GitHub 워크플로는 이 인증 정보를 사용하도록 설정되어 있지 않습니다.
 
 ## 코드 구조
 
