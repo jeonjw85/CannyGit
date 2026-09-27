@@ -66,6 +66,8 @@ jobs:
         with:
           name: release-files
           path: |
+            Artifacts/CannyGit-${{ needs.version.outputs.version }}-macOS.dmg
+            Artifacts/CannyGit-${{ needs.version.outputs.version }}-macOS.dmg.sha256
             Artifacts/CannyGit-${{ needs.version.outputs.version }}-macOS.zip
             Artifacts/CannyGit-${{ needs.version.outputs.version }}-macOS.zip.sha256
           if-no-files-found: error
@@ -89,7 +91,9 @@ jobs:
         working-directory: Artifacts
         env:
           RELEASE_VERSION: ${{ needs.version.outputs.version }}
-        run: sha256sum --check "CannyGit-$RELEASE_VERSION-macOS.zip.sha256"
+        run: |
+          sha256sum --check "CannyGit-$RELEASE_VERSION-macOS.dmg.sha256"
+          sha256sum --check "CannyGit-$RELEASE_VERSION-macOS.zip.sha256"
 
       - name: Create release
         env:
@@ -98,9 +102,10 @@ jobs:
           RELEASE_VERSION: ${{ needs.version.outputs.version }}
         run: |
           archive="Artifacts/CannyGit-$RELEASE_VERSION-macOS.zip"
-          gh release create "$RELEASE_TAG" "$archive" "$archive.sha256" \
+          image="Artifacts/CannyGit-$RELEASE_VERSION-macOS.dmg"
+          gh release create "$RELEASE_TAG" "$image" "$image.sha256" "$archive" "$archive.sha256" \
             --repo "$GITHUB_REPOSITORY" \
             --verify-tag \
             --title "CannyGit $RELEASE_TAG" \
             --generate-notes \
-            --notes 'Requires macOS 14 or later. Includes Apple Silicon and Intel binaries. This build is ad-hoc signed and is not notarized by Apple. macOS may block it when first opened.'
+            --notes 'Download the DMG, open it, and drag CannyGit.app into Applications. Requires macOS 14 or later and supports Apple Silicon and Intel. A ZIP is also available. The app is ad-hoc signed and is not notarized by Apple. macOS may block it when first opened.'

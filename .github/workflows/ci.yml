@@ -39,6 +39,7 @@ jobs:
       - name: Check packaging scripts
         run: |
           bash -n Scripts/package-release.sh
+          bash -n Scripts/create-dmg.sh
           python3 Scripts/test-package-release.py
 
       - name: Build and run integration tests
