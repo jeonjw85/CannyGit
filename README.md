@@ -20,6 +20,12 @@ Built with SwiftUI and AppKit, with [SwiftTerm](https://github.com/migueldeicaza
 
 There is no UI for Git commit, push, pull, PR management, or conflict resolution yet. Use the embedded terminal or your usual tools for those.
 
+## Install
+
+Download the DMG from the [latest release](https://github.com/jeonjw85/CannyGit/releases/latest). Open it and drag `CannyGit.app` into the `Applications` folder next to it. Then eject the disk image and launch the app from your Applications folder.
+
+A ZIP download is also available.
+
 ## Build and run
 
 You'll need macOS 14 or later, a full Xcode installation, and Git. Builds and tests have been verified with Xcode 27.0 on macOS 26.6.2, running on Apple Silicon. The commands below target Apple Silicon too.
@@ -98,7 +104,7 @@ Manual verification is still needed for Korean IME composition, the full VoiceOv
 
 ## CI and releases
 
-Pushing to `main` or opening a pull request against it starts [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml). It builds the app, runs integration tests and static analysis, checks the string catalog, tests the packaging script, and builds a Release ZIP. Test results are available as workflow artifacts.
+Pushing to `main` or opening a pull request against it starts [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml). It builds the app, runs integration tests and static analysis, checks the string catalog, tests the packaging script, and builds the Release DMG and ZIP. Test results are available as workflow artifacts.
 
 The workflows use GitHub's `xcode-27` public preview runner with Xcode 27.0. UI tests and the 30-minute output soak test remain local checks you can run when needed.
 
@@ -109,9 +115,9 @@ git tag v0.2.1
 git push origin v0.2.1
 ```
 
-The [Release](https://github.com/jeonjw85/CannyGit/actions/workflows/release.yml) workflow verifies the tagged source, builds a universal app, and publishes a GitHub Release with the ZIP and a SHA-256 checksum. It uses the built-in `GITHUB_TOKEN`; no separate token is needed.
+The [Release](https://github.com/jeonjw85/CannyGit/actions/workflows/release.yml) workflow verifies the tagged source, builds a universal app, and publishes a GitHub Release with the DMG, ZIP, and a SHA-256 checksum for each file. It uses the built-in `GITHUB_TOKEN`; no separate token is needed.
 
-Tags must follow `vMAJOR.MINOR.PATCH`, such as `v0.2.1`. The tag supplies the app version and ZIP filename, so you don't need to update the Xcode project's version before each release. The Release workflow's run number becomes the build number. Failed checks or builds prevent publication.
+Tags must follow `vMAJOR.MINOR.PATCH`, such as `v0.2.1`. The tag supplies the app version and package filenames, so you don't need to update the Xcode project's version before each release. The Release workflow's run number becomes the build number. Failed checks or builds prevent publication.
 
 Automated releases currently use ad-hoc signing. They are not Developer ID signed or notarized by Apple, so macOS may block the app when first opened.
 
@@ -121,7 +127,14 @@ Automated releases currently use ad-hoc signing. They are not Developer ID signe
 bash Scripts/package-release.sh
 ```
 
-This builds the Release app and creates `Artifacts/CannyGit-<version>-macOS.zip` and its `.zip.sha256` file. Without an explicit version, it uses the version in the Xcode project.
+This builds the Release app and creates the following files in `Artifacts/`. Without an explicit version, it uses the version in the Xcode project.
+
+- `CannyGit-<version>-macOS.dmg`
+- `CannyGit-<version>-macOS.dmg.sha256`
+- `CannyGit-<version>-macOS.zip`
+- `CannyGit-<version>-macOS.zip.sha256`
+
+The DMG is built with macOS's included `hdiutil` tool and contains the app and an `Applications` shortcut.
 
 ```sh
 RELEASE_VERSION=0.2.1 BUILD_NUMBER=3 bash Scripts/package-release.sh

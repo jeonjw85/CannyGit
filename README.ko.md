@@ -20,6 +20,12 @@ SwiftUI와 AppKit으로 만들었으며, 내장 터미널은 [SwiftTerm](https:/
 
 Git commit, push, pull, PR 관리와 충돌 해결 에디터는 아직 제공하지 않습니다. 필요한 Git 작업은 내장 터미널이나 기존 도구에서 하면 됩니다.
 
+## 설치
+
+[최신 릴리스](https://github.com/jeonjw85/CannyGit/releases/latest)에서 DMG 파일을 받으세요. DMG를 열고 `CannyGit.app`을 옆의 `Applications` 폴더로 끌어 놓으면 됩니다. 설치 후 디스크 이미지를 추출하고 응용 프로그램 폴더에서 앱을 실행하세요.
+
+ZIP 파일도 함께 제공합니다.
+
 ## 빌드하고 실행하기
 
 macOS 14 이상, 전체 Xcode, Git이 필요합니다. 빌드와 테스트는 Xcode 27.0, macOS 26.6.2, Apple Silicon 환경에서 확인했습니다. 아래 명령도 Apple Silicon 기준입니다.
@@ -98,7 +104,7 @@ xcodebuild -project CannyGit.xcodeproj \
 
 ## CI와 릴리스
 
-`main`에 푸시하거나 `main`을 대상으로 PR을 열면 [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml)가 실행됩니다. Xcode 빌드와 통합 테스트, 정적 분석, 문자열 카탈로그 검사, 패키징 스크립트 테스트를 수행하고 Release ZIP도 만들어 봅니다. 테스트 결과는 Actions 실행 화면에서 내려받을 수 있습니다.
+`main`에 푸시하거나 `main`을 대상으로 PR을 열면 [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml)가 실행됩니다. Xcode 빌드와 통합 테스트, 정적 분석, 문자열 카탈로그 검사, 패키징 스크립트 테스트를 수행하고 Release DMG와 ZIP도 만들어 봅니다. 테스트 결과는 Actions 실행 화면에서 내려받을 수 있습니다.
 
 러너는 GitHub의 `xcode-27` 공개 프리뷰 이미지이며 Xcode 27.0을 사용합니다. UI 테스트와 30분 출력 시험은 로컬에서 필요할 때 실행합니다.
 
@@ -109,9 +115,9 @@ git tag v0.2.1
 git push origin v0.2.1
 ```
 
-[Release](https://github.com/jeonjw85/CannyGit/actions/workflows/release.yml) 워크플로가 태그의 코드를 다시 검증한 뒤 universal 앱을 빌드합니다. 성공하면 GitHub Release를 만들고 ZIP과 SHA-256 체크섬을 첨부합니다. 별도의 토큰을 등록할 필요 없이 기본 `GITHUB_TOKEN`을 사용합니다.
+[Release](https://github.com/jeonjw85/CannyGit/actions/workflows/release.yml) 워크플로가 태그의 코드를 다시 검증한 뒤 universal 앱을 빌드합니다. 성공하면 GitHub Release를 만들고 DMG, ZIP, 각 파일의 SHA-256 체크섬을 첨부합니다. 별도의 토큰을 등록할 필요 없이 기본 `GITHUB_TOKEN`을 사용합니다.
 
-태그는 `v0.2.1`처럼 `vMAJOR.MINOR.PATCH` 형식을 사용합니다. 앱 버전과 ZIP 파일명에는 태그의 버전이 반영되므로 배포 전에 Xcode 프로젝트의 버전을 따로 바꿀 필요는 없습니다. 빌드 번호는 Release 워크플로의 실행 번호를 사용합니다. 검증이나 빌드가 실패하면 릴리스를 발행하지 않습니다.
+태그는 `v0.2.1`처럼 `vMAJOR.MINOR.PATCH` 형식을 사용합니다. 앱 버전과 배포 파일명에는 태그의 버전이 반영되므로 배포 전에 Xcode 프로젝트의 버전을 따로 바꿀 필요는 없습니다. 빌드 번호는 Release 워크플로의 실행 번호를 사용합니다. 검증이나 빌드가 실패하면 릴리스를 발행하지 않습니다.
 
 현재 자동 배포는 ad-hoc 서명을 사용합니다. Developer ID 서명과 Apple 공증을 거친 앱이 아니므로 처음 열 때 macOS에서 실행을 차단할 수 있습니다.
 
@@ -121,7 +127,14 @@ git push origin v0.2.1
 bash Scripts/package-release.sh
 ```
 
-Release 앱을 빌드하고 `Artifacts/CannyGit-<버전>-macOS.zip`과 `.zip.sha256` 파일을 만듭니다. 버전을 지정하지 않으면 Xcode 프로젝트의 버전을 사용합니다.
+Release 앱을 빌드하고 `Artifacts/`에 다음 파일을 만듭니다. 버전을 지정하지 않으면 Xcode 프로젝트의 버전을 사용합니다.
+
+- `CannyGit-<버전>-macOS.dmg`
+- `CannyGit-<버전>-macOS.dmg.sha256`
+- `CannyGit-<버전>-macOS.zip`
+- `CannyGit-<버전>-macOS.zip.sha256`
+
+DMG는 macOS에 포함된 `hdiutil`로 만들며, 앱과 `Applications` 바로가기가 들어 있습니다.
 
 ```sh
 RELEASE_VERSION=0.2.1 BUILD_NUMBER=3 bash Scripts/package-release.sh
