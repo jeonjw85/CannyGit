@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build and test
+    runs-on: xcode-27
+    timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_27.0.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Prepare Xcode
+        run: |
+          xcodebuild -version
+          swift --version
+          if ! xcrun metal -v >/dev/null 2>&1; then
+            xcodebuild -downloadComponent MetalToolchain
+          fi
+          xcrun metal -v
+
+      - name: Check packaging scripts
+        run: |
+          bash -n Scripts/package-release.sh
+          python3 Scripts/test-package-release.py
+
+      - name: Build and run integration tests
+        run: |
+          xcodebuild -project CannyGit.xcodeproj \
+            -scheme CannyGit \
+            -configuration Debug \
+            -destination 'platform=macOS,arch=arm64' \
+            -derivedDataPath DerivedData \
+            -resultBundlePath DerivedData/CI.xcresult \
+            -skipPackagePluginValidation test -quiet
+
+      - name: Check localization
+        run: python3 Scripts/check-localization.py
+
+      - name: Analyze
+        run: |
+          xcodebuild -project CannyGit.xcodeproj \
+            -scheme CannyGit \
+            -configuration Debug \
+            -destination 'platform=macOS,arch=arm64' \
+            -derivedDataPath DerivedData \
+            -skipPackagePluginValidation analyze -quiet
+
+      - name: Verify release packaging
+        if: github.ref_type != 'tag'
+        run: bash Scripts/package-release.sh
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: test-results-${{ github.run_attempt }}
+          path: DerivedData/CI.xcresult
+          if-no-files-found: ignore
+          retention-days: 7
