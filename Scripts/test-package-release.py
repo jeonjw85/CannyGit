@@ -25,6 +25,8 @@ with open(os.environ["MOCK_LOG"], "a") as log:
     log.write(json.dumps([name] + args) + "\n")
 if os.environ.get("MOCK_FAIL_TOOL") == name:
     sys.exit(1)
+if os.environ.get("MOCK_FAIL_OPERATION") == " ".join([name] + args[:1]):
+    sys.exit(1)
 if name == "xcodebuild":
     derived = Path(args[args.index("-derivedDataPath") + 1])
     app = derived / "Build/Products/Release/CannyGit.app/Contents"
@@ -36,7 +38,25 @@ if name == "xcodebuild":
         plistlib.dump({"CFBundleShortVersionString": version, "CFBundleVersion": build}, output)
     (app / "MacOS/CannyGit").write_bytes(b"fixture executable")
 elif name == "xcrun" and args[:2] == ["stapler", "staple"]:
-    (Path(args[-1]) / "Contents/staple.ticket").write_text("fixture ticket")
+    target = Path(args[-1])
+    if target.is_dir():
+        (target / "Contents/staple.ticket").write_text("fixture ticket")
+    else:
+        target.write_bytes(target.read_bytes() + b"\nfixture ticket")
+elif name == "hdiutil":
+    if args[0] == "create":
+        staging = Path(args[args.index("-srcfolder") + 1])
+        app = staging / "CannyGit.app"
+        info = plistlib.loads((app / "Contents/Info.plist").read_bytes())
+        Path(os.environ["MOCK_DMG_MANIFEST"]).write_text(json.dumps({
+            "files": sorted(item.name for item in staging.iterdir()),
+            "applications": os.readlink(staging / "Applications"),
+            "info": info,
+            "app_stapled": (app / "Contents/staple.ticket").exists(),
+        }))
+        Path(args[-1]).write_bytes(b"fixture disk image")
+    elif args[0] == "verify":
+        assert Path(args[-1]).is_file()
 '''
 
 
@@ -47,7 +67,7 @@ class PackageReleaseTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.bin = self.root / "bin"
         self.bin.mkdir()
-        for name in ["xcodebuild", "codesign", "lipo", "xcrun"]:
+        for name in ["xcodebuild", "codesign", "lipo", "xcrun", "hdiutil"]:
             tool = self.bin / name
             tool.write_text(f"#!{sys.executable}\n" + TOOL)
             tool.chmod(0o700)
@@ -61,6 +81,7 @@ class PackageReleaseTests(unittest.TestCase):
             "DERIVED_DATA_PATH": str(self.root / "Derived Data"),
             "OUTPUT_DIR": str(self.output),
             "MOCK_LOG": str(self.log),
+            "MOCK_DMG_MANIFEST": str(self.root / "dmg-contents.json"),
         })
 
     def run_package(self, **environment):
@@ -82,6 +103,16 @@ class PackageReleaseTests(unittest.TestCase):
         digest, name = Path(str(archive) + ".sha256").read_text().split()
         self.assertEqual(name, archive.name)
         self.assertEqual(digest, hashlib.sha256(archive.read_bytes()).hexdigest())
+        image = self.output / f"CannyGit-{version}-macOS.dmg"
+        digest, name = Path(str(image) + ".sha256").read_text().split()
+        self.assertEqual(name, image.name)
+        self.assertEqual(digest, hashlib.sha256(image.read_bytes()).hexdigest())
+        contents = json.loads((self.root / "dmg-contents.json").read_text())
+        self.assertEqual(contents["files"], ["Applications", "CannyGit.app"])
+        self.assertEqual(contents["applications"], "/Applications")
+        self.assertEqual(contents["info"], info)
+        creation = next(call for call in self.calls() if call[:2] == ["hdiutil", "create"])
+        self.assertFalse(Path(creation[creation.index("-srcfolder") + 1]).exists())
         return archive
 
     def test_tag_version_and_build_number_reach_the_app_and_archive(self):
@@ -143,6 +174,26 @@ class PackageReleaseTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertFalse(self.output.exists())
 
+    def test_image_creation_failure_prevents_checksums(self):
+        result = self.run_package(MOCK_FAIL_OPERATION="hdiutil create")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(list(self.output.glob("*.sha256")), [])
+        creation = next(call for call in self.calls() if call[:2] == ["hdiutil", "create"])
+        self.assertFalse(Path(creation[creation.index("-srcfolder") + 1]).exists())
+
+    def test_image_verification_failure_prevents_checksums(self):
+        result = self.run_package(MOCK_FAIL_OPERATION="hdiutil verify")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(list(self.output.glob("*.sha256")), [])
+
+    def test_dmg_tool_rejects_a_missing_app(self):
+        result = subprocess.run(
+            ["/bin/bash", str(SCRIPT.with_name("create-dmg.sh")), str(self.root / "missing.app"), str(self.root / "output.dmg")],
+            env=self.environment, capture_output=True, text=True, timeout=30,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertFalse(self.log.exists())
+
     def test_notarization_requires_a_signing_identity(self):
         result = self.run_package(NOTARY_PROFILE="fixture-profile")
         self.assertNotEqual(result.returncode, 0)
@@ -158,6 +209,12 @@ class PackageReleaseTests(unittest.TestCase):
         self.assertTrue(any("--timestamp" in call for call in calls))
         self.assertTrue(any(call[:3] == ["xcrun", "notarytool", "submit"] for call in calls))
         self.assertTrue(any(call[:3] == ["xcrun", "stapler", "validate"] for call in calls))
+        contents = json.loads((self.root / "dmg-contents.json").read_text())
+        self.assertTrue(contents["app_stapled"])
+        image = str(self.output / "CannyGit-0.2.0-macOS.dmg")
+        self.assertTrue(any(call[0] == "codesign" and "--sign" in call and call[-1] == image for call in calls))
+        self.assertTrue(any(call[:4] == ["xcrun", "notarytool", "submit", image] for call in calls))
+        self.assertTrue(any(call == ["xcrun", "stapler", "validate", image] for call in calls))
 
 
 if __name__ == "__main__":

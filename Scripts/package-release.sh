@@ -59,6 +59,8 @@ codesign --verify --deep --strict "$APP"
 mkdir -p "$OUTPUT"
 ARCHIVE_NAME="CannyGit-$VERSION-macOS.zip"
 ARCHIVE="$OUTPUT/$ARCHIVE_NAME"
+IMAGE_NAME="CannyGit-$VERSION-macOS.dmg"
+IMAGE="$OUTPUT/$IMAGE_NAME"
 ditto -c -k --sequesterRsrc --keepParent "$APP" "$ARCHIVE"
 
 if [[ -n "${NOTARY_PROFILE:-}" ]]; then
@@ -68,8 +70,23 @@ if [[ -n "${NOTARY_PROFILE:-}" ]]; then
     ditto -c -k --sequesterRsrc --keepParent "$APP" "$ARCHIVE"
 fi
 unzip -tq "$ARCHIVE"
+
+# Package the final app, including its stapled ticket when notarization is enabled.
+bash "$ROOT/Scripts/create-dmg.sh" "$APP" "$IMAGE"
+if [[ -n "${DEVELOPER_ID_APPLICATION:-}" ]]; then
+    codesign --force --timestamp --sign "$DEVELOPER_ID_APPLICATION" "$IMAGE"
+    codesign --verify --strict "$IMAGE"
+fi
+if [[ -n "${NOTARY_PROFILE:-}" ]]; then
+    xcrun notarytool submit "$IMAGE" --keychain-profile "$NOTARY_PROFILE" --wait
+    xcrun stapler staple "$IMAGE"
+    xcrun stapler validate "$IMAGE"
+fi
+
 (
     cd "$OUTPUT"
     shasum -a 256 "$ARCHIVE_NAME" > "$ARCHIVE_NAME.sha256"
+    shasum -a 256 "$IMAGE_NAME" > "$IMAGE_NAME.sha256"
 )
+printf 'Created %s and %s.sha256\n' "$IMAGE" "$IMAGE"
 printf 'Created %s and %s.sha256\n' "$ARCHIVE" "$ARCHIVE"
