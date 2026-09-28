@@ -269,11 +269,16 @@ extension TerminalSession: @preconcurrency TerminalViewDelegate {
         resize(columns: newCols, rows: newRows)
     }
 
-    func send(source: TerminalView, data: ArraySlice<UInt8>) { send(Data(data)) }
+    func send(source: TerminalView, data: ArraySlice<UInt8>) {
+        (source as? EmbeddedTerminalView)?.userInputWillSend(data)
+        send(Data(data))
+    }
     func setTerminalTitle(source: TerminalView, title: String) {}
     func hostCurrentDirectoryUpdate(source: TerminalView, directory: String?) {}
     func scrolled(source: TerminalView, position: Double) {}
-    func rangeChanged(source: TerminalView, startY: Int, endY: Int) {}
+    func rangeChanged(source: TerminalView, startY: Int, endY: Int) {
+        (source as? EmbeddedTerminalView)?.accessibilityOutputChanged()
+    }
 
     func clipboardCopy(source: TerminalView, content: Data) {
         guard let text = String(data: content, encoding: .utf8) else { return }
