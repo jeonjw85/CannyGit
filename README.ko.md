@@ -98,13 +98,15 @@ xcodebuild -project CannyGit.xcodeproj \
   -skipPackagePluginValidation test
 ```
 
-현재 통합 테스트 59개와 UI 시나리오 2개가 통과했습니다. 워크트리 생성과 삭제, 설정 복원, 프로세스 정리, 실행 그룹, diff 등을 검증합니다. UI 테스트는 실제 창과 키보드를 사용합니다.
+현재 통합 테스트 65개와 UI 시나리오 2개가 통과합니다. 워크트리 생성과 삭제, 설정 복원, 프로세스 정리, 실행 그룹, diff, 접근성 출력을 검증합니다. UI 테스트는 실제 창과 키보드를 사용합니다.
 
-실제 한글 IME 조합, VoiceOver 전체 흐름, 외장 디스크를 분리한 뒤 다시 연결했을 때의 동작은 수동 검증이 남아 있습니다. Release는 arm64/x86_64 universal 바이너리로 빌드되지만 macOS 14와 Intel 실기기에서의 실행은 아직 확인하지 않았습니다.
+`bash Scripts/test-native-input.sh`는 실행 중인 앱에 실제 HID 입력과 접근성 API로 접근해 두벌식 IME 조합, 백스페이스 편집, 선택·복사, less/top 조작, Option-Return 한자 후보 선택을 검증합니다. 통합 테스트는 arm64와 Intel(x86_64) 양쪽에서 실행합니다.
+
+VoiceOver 실제 사용자 흐름, 외장 디스크를 분리한 뒤 다시 연결했을 때의 실제 동작, sleep/wake, macOS 14와 Intel 실기기에서의 실행은 아직 수동 확인이 남아 있습니다.
 
 ## CI와 릴리스
 
-`main`에 푸시하거나 `main`을 대상으로 PR을 열면 [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml)가 실행됩니다. Xcode 빌드와 통합 테스트, 정적 분석, 문자열 카탈로그 검사, 패키징 스크립트 테스트를 수행하고 Release DMG와 ZIP도 만들어 봅니다. 테스트 결과는 Actions 실행 화면에서 내려받을 수 있습니다.
+`main`에 푸시하거나 `main`을 대상으로 PR을 열면 [CI](https://github.com/jeonjw85/CannyGit/actions/workflows/ci.yml)가 실행됩니다. Xcode 빌드와 통합 테스트, Intel(x86_64) 통합 테스트, 정적 분석, 문자열 카탈로그 검사, 패키징 스크립트 테스트를 수행하고 Release DMG와 ZIP도 만들어 봅니다. 테스트 결과는 Actions 실행 화면에서 내려받을 수 있습니다.
 
 러너는 GitHub의 `xcode-27` 공개 프리뷰 이미지이며 Xcode 27.0을 사용합니다. UI 테스트와 30분 출력 시험은 로컬에서 필요할 때 실행합니다.
 
