@@ -329,6 +329,10 @@ final class DashboardModel {
             guard generations[repository.id] == generation,
                 settings.repositories.first(where: { $0.id == repository.id })?.commonDirectory == repository.commonDirectory else { return }
             repositoryErrors[repository.id] = error.localizedDescription
+            for index in worktrees.indices where worktrees[index].repositoryID == repository.id {
+                statusGenerations[worktrees[index].id, default: 0] += 1
+                worktrees[index].error = error.localizedDescription
+            }
         }
     }
 
