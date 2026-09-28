@@ -52,6 +52,19 @@ jobs:
             -resultBundlePath DerivedData/CI.xcresult \
             -skipPackagePluginValidation test -quiet
 
+      - name: Run integration tests for Intel (x86_64)
+        run: |
+          if ! arch -x86_64 /usr/bin/true >/dev/null 2>&1; then
+            sudo softwareupdate --install-rosetta --agree-to-license
+          fi
+          xcodebuild -project CannyGit.xcodeproj \
+            -scheme CannyGit \
+            -configuration Debug \
+            -destination 'platform=macOS,arch=x86_64' \
+            -derivedDataPath DerivedData \
+            -resultBundlePath DerivedData/CI-x86_64.xcresult \
+            -skipPackagePluginValidation test -quiet
+
       - name: Check localization
         run: python3 Scripts/check-localization.py
 
@@ -73,6 +86,8 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: test-results-${{ github.run_attempt }}
-          path: DerivedData/CI.xcresult
+          path: |
+            DerivedData/CI.xcresult
+            DerivedData/CI-x86_64.xcresult
           if-no-files-found: ignore
           retention-days: 7

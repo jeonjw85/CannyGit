@@ -30,7 +30,7 @@ if os.environ.get("MOCK_FAIL_OPERATION") == " ".join([name] + args[:1]):
 if name == "xcodebuild":
     derived = Path(args[args.index("-derivedDataPath") + 1])
     app = derived / "Build/Products/Release/CannyGit.app/Contents"
-    (app / "MacOS").mkdir(parents=True)
+    (app / "MacOS").mkdir(parents=True, exist_ok=True)
     settings = dict(arg.split("=", 1) for arg in args if "=" in arg)
     version = os.environ.get("MOCK_APP_VERSION", settings.get("MARKETING_VERSION", "0.2.0"))
     build = os.environ.get("MOCK_BUILD_NUMBER", settings.get("CURRENT_PROJECT_VERSION", "2"))
@@ -43,6 +43,10 @@ elif name == "xcrun" and args[:2] == ["stapler", "staple"]:
         (target / "Contents/staple.ticket").write_text("fixture ticket")
     else:
         target.write_bytes(target.read_bytes() + b"\nfixture ticket")
+elif name == "vtool":
+    arch = args[args.index("-arch") + 1] if "-arch" in args else "arm64"
+    minos = os.environ.get(f"MOCK_MINOS_{arch.upper()}", os.environ.get("MOCK_MINOS", "14.0"))
+    print(f" platform MACOS\n    minos {minos}\n   ntools 1")
 elif name == "hdiutil":
     if args[0] == "create":
         staging = Path(args[args.index("-srcfolder") + 1])
@@ -67,7 +71,7 @@ class PackageReleaseTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.bin = self.root / "bin"
         self.bin.mkdir()
-        for name in ["xcodebuild", "codesign", "lipo", "xcrun", "hdiutil"]:
+        for name in ["xcodebuild", "codesign", "lipo", "vtool", "xcrun", "hdiutil"]:
             tool = self.bin / name
             tool.write_text(f"#!{sys.executable}\n" + TOOL)
             tool.chmod(0o700)
@@ -125,6 +129,15 @@ class PackageReleaseTests(unittest.TestCase):
         self.assertIn("MARKETING_VERSION=1.2.3", build)
         for architecture in ["arm64", "x86_64"]:
             self.assertTrue(any(call[0] == "lipo" and call[-2:] == ["-verify_arch", architecture] for call in self.calls()))
+            self.assertTrue(any(call[0] == "vtool" and call[1:3] == ["-arch", architecture] for call in self.calls()))
+
+    def test_non_macos14_deployment_target_does_not_produce_an_archive(self):
+        for architecture in ["arm64", "x86_64"]:
+            with self.subTest(architecture=architecture):
+                result = self.run_package(**{f"MOCK_MINOS_{architecture.upper()}": "13.0"})
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("expected 14.0", result.stderr)
+                self.assertFalse(self.output.exists())
 
     def test_local_packaging_keeps_the_project_version(self):
         result = self.run_package()

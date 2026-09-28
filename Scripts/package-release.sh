@@ -47,6 +47,12 @@ if [[ -n "${BUILD_NUMBER:-}" ]]; then
 fi
 for architecture in arm64 x86_64; do
     lipo "$APP/Contents/MacOS/CannyGit" -verify_arch "$architecture"
+    minos=$(vtool -arch "$architecture" -show-build "$APP/Contents/MacOS/CannyGit" |
+        awk '$1 == "minos" { print $2; exit }')
+    if [[ "$minos" != "14.0" ]]; then
+        printf '%s\n' "The $architecture slice targets macOS ${minos:-unknown}, expected 14.0." >&2
+        exit 1
+    fi
 done
 
 if [[ -n "${DEVELOPER_ID_APPLICATION:-}" ]]; then
