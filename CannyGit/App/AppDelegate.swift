@@ -20,7 +20,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             alert.informativeText = String(localized: "세션 \(count)개와 실행 그룹 \(groups)개를 정리합니다. 소유한 자식 작업도 함께 중지합니다.")
             alert.addButton(withTitle: String(localized: "중지하고 종료"))
             alert.addButton(withTitle: String(localized: "취소"))
-            guard alert.runModal() == .alertFirstButtonReturn else { return .terminateCancel }
+            guard alert.runModal() == .alertFirstButtonReturn else {
+                AppLanguage.cancelRelaunch()
+                return .terminateCancel
+            }
         }
         terminationPending = true
         Task {
@@ -29,6 +32,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             if let error = model?.saveError {
                 await model?.cancelTermination()
                 terminationPending = false
+                AppLanguage.cancelRelaunch()
                 sender.reply(toApplicationShouldTerminate: false)
                 let alert = NSAlert()
                 alert.messageText = String(localized: "설정을 저장하지 못했습니다")
@@ -37,10 +41,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 return
             }
             let ready = await coordinator.prepareToQuit()
-            if !ready { await model?.cancelTermination() }
+            if !ready {
+                await model?.cancelTermination()
+                AppLanguage.cancelRelaunch()
+            }
             terminationPending = false
             sender.reply(toApplicationShouldTerminate: ready)
         }
         return .terminateLater
+    }
+
+    func applicationWillTerminate(_ notification: Notification) {
+        AppLanguage.finishRelaunchIfNeeded()
     }
 }

@@ -64,7 +64,7 @@ actor SettingsStore {
         guard data.count <= 8 * 1024 * 1024 else { throw ExecutionError(message: "설정 파일이 너무 큽니다.") }
         var settings = try JSONDecoder().decode(AppSettings.self, from: data)
         guard (0...2).contains(settings.schemaVersion) else {
-            throw ExecutionError(message: "지원하지 않는 설정 버전입니다. 파일을 보존하고 앱 버전을 확인하세요.")
+            throw ExecutionError(message: "지원하지 않는 설정 버전. 파일은 보존했습니다. 앱 버전 확인")
         }
         // Version 0 stored repositories and selection only; new collections default to empty.
         settings.schemaVersion = 2

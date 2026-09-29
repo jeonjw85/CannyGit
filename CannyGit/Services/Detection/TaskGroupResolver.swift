@@ -29,7 +29,7 @@ actor TaskGroupResolver {
                     let name = group.references.first { $0.id == id }?.name ?? id
                     throw ExecutionError(message: "그룹의 작업을 찾을 수 없습니다: \(name)")
                 }
-                guard !candidate.needsPackageManager else { throw ExecutionError(message: "패키지 매니저를 선택한 뒤 그룹을 실행하세요.") }
+                guard !candidate.needsPackageManager else { throw ExecutionError(message: "패키지 매니저 선택 후 그룹 실행") }
                 return candidate.definition
             }
         }

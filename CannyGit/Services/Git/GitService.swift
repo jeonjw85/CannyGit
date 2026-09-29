@@ -87,7 +87,7 @@ actor GitService {
     private func createLocked(repository: Repository, branch: String, startPoint: String,
                               destination: URL, existing: Bool, executable: String) async throws {
         let checked = try GitParser.line(await command(["check-ref-format", "--branch", branch], path: repository.commonDirectory, executable: executable))
-        guard checked == branch else { throw ExecutionError(message: "브랜치 이름을 직접 입력하세요. 이전 브랜치 표현식은 사용할 수 없습니다.") }
+        guard checked == branch else { throw ExecutionError(message: "브랜치 이름은 직접 입력. 이전 브랜치 표현식은 사용할 수 없습니다.") }
         let trees = try await worktrees(repository, executable: executable)
         guard !trees.contains(where: { $0.branchRef == "refs/heads/\(branch)" }) else {
             throw ExecutionError(message: "다른 워크트리가 이 브랜치를 사용하고 있습니다.")
@@ -110,14 +110,14 @@ actor GitService {
             _ = try await command(["worktree", "add", "--", path, branch], path: repository.commonDirectory, executable: executable)
         } else {
             guard branches.contains(where: { $0.ref == startPoint }) else {
-                throw ExecutionError(message: "유효한 기준 브랜치를 선택하세요. 첫 커밋 전에는 워크트리를 생성할 수 없습니다.")
+                throw ExecutionError(message: "유효한 기준 브랜치 필요. 첫 커밋 전에는 워크트리를 만들 수 없습니다.")
             }
             let commit = try GitParser.line(await command(["rev-parse", "--verify", "--end-of-options", startPoint + "^{commit}"], path: repository.commonDirectory, executable: executable))
             _ = try await command(["worktree", "add", "-b", branch, "--", path, commit], path: repository.commonDirectory, executable: executable)
         }
         let actual = try GitParser.line(await command(["symbolic-ref", "HEAD"], path: path, executable: executable))
         guard actual == "refs/heads/\(branch)" else {
-            throw ExecutionError(message: "워크트리가 생성되었지만 브랜치 연결이 예상과 다릅니다. 목록을 다시 확인하세요.")
+            throw ExecutionError(message: "워크트리는 만들었지만 브랜치 연결이 예상과 다릅니다. 목록을 다시 확인")
         }
     }
 
@@ -127,7 +127,7 @@ actor GitService {
             !tree.isMain, !tree.isBare, !tree.isMissing, tree.locked == nil
         else { throw ExecutionError(message: "메인·bare·잠김·누락 워크트리는 삭제할 수 없습니다.") }
         guard let directory = worktree.gitDirectory, tree.gitDirectory == directory else {
-            throw ExecutionError(message: "워크트리 연결이 변경되었습니다. 목록을 갱신한 뒤 다시 시도하세요.")
+            throw ExecutionError(message: "워크트리 연결이 바뀌었습니다. 목록 갱신 후 다시 시도")
         }
         let state = try await status(path: tree.path, executable: executable, ignored: true)
         guard state.isClean else { throw ExecutionError(message: "변경 또는 미추적 항목이 있는 워크트리는 삭제할 수 없습니다.") }

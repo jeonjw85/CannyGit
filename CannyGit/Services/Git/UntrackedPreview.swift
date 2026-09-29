@@ -23,7 +23,7 @@ enum UntrackedPreview {
             return DiffDocument(text: try GitParser.text(bytes.prefix(count)), notice: String(localized: "심볼릭 링크 대상 경로입니다. 대상 파일 내용은 읽지 않습니다."))
         }
         if info.st_mode & S_IFMT == S_IFDIR {
-            return DiffDocument(text: "", notice: String(localized: "미추적 파일 확장을 켜고 개별 파일을 선택하세요."))
+            return DiffDocument(text: "", notice: String(localized: "미추적 파일 확장 후 개별 파일 선택"))
         }
         guard info.st_mode & S_IFMT == S_IFREG else { throw ExecutionError(message: "일반 파일만 미리 볼 수 있습니다.") }
         let fd = openat(directory, name, O_RDONLY | O_CLOEXEC | O_NOFOLLOW | O_NONBLOCK)
@@ -31,11 +31,11 @@ enum UntrackedPreview {
         let handle = FileHandle(fileDescriptor: fd, closeOnDealloc: true)
         defer { try? handle.close() }
         guard fstat(fd, &info) == 0, info.st_mode & S_IFMT == S_IFREG else {
-            throw ExecutionError(message: "파일 형식이 변경되었습니다. 다시 조회하세요.")
+            throw ExecutionError(message: "파일 형식이 바뀌었습니다. 다시 조회")
         }
         let data = try handle.read(upToCount: limit + 1) ?? Data()
         guard data.count <= limit else {
-            return DiffDocument(text: "", notice: String(localized: "파일이 미리 보기 한도를 초과했습니다. 에디터에서 확인하세요."))
+            return DiffDocument(text: "", notice: String(localized: "미리 보기 한도 초과. 에디터에서 확인"))
         }
         guard !data.contains(0), let text = String(data: data, encoding: .utf8) else {
             return DiffDocument(text: "", notice: String(localized: "바이너리 또는 UTF-8이 아닌 파일입니다."))

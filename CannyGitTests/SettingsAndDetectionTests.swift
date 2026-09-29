@@ -61,7 +61,7 @@ struct SettingsAndDetectionTests {
         let changed = try await detector.detect(root: root, directory: ".", preferredManager: "npm")
         let merged = TaskCatalog.merge(changed, rules: [rule], repositoryID: repositoryID, worktreeID: worktreeID)
         #expect(merged.first { $0.id == edited.id }?.definition.command == edited.command)
-        #expect(merged.first { $0.id == edited.id }?.notice?.contains("변경") == true)
+        #expect(merged.first { $0.id == edited.id }?.notice == String(localized: "탐지 원본이 변경되었습니다. 저장한 명령은 유지됩니다."))
         let other = TaskCatalog.merge(report, rules: [], repositoryID: repositoryID, worktreeID: worktreeID)
         #expect(other.contains { $0.definition.name == "$install" })
     }

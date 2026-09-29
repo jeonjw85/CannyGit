@@ -33,7 +33,7 @@ actor TaskDetector {
             if let preferredManager, Self.managers.contains(preferredManager) { manager = preferredManager }
             else { manager = choices.count <= 1 ? (choices.first ?? "npm") : nil }
             report.packageManagers = choices.sorted()
-            if manager == nil { report.notices.append(String(localized: "패키지 매니저 단서가 충돌합니다. 사용할 실행기를 선택하세요.")) }
+            if manager == nil { report.notices.append(String(localized: "패키지 매니저 단서가 충돌합니다. 실행기 선택")) }
             if json["scripts"] != nil && !(json["scripts"] is [String: String]) {
                 throw ExecutionError(message: "package.json scripts에는 문자열 명령만 사용할 수 있습니다.")
             }
@@ -69,7 +69,7 @@ actor TaskDetector {
             }
         }
         if FileManager.default.fileExists(atPath: folder.appendingPathComponent("pyproject.toml").path) {
-            report.notices.append(String(localized: "Python 프로젝트입니다. 사용할 실행기와 작업 명령을 직접 등록하세요."))
+            report.notices.append(String(localized: "Python 프로젝트. 실행기와 작업 명령 직접 등록"))
         }
         report.fingerprint = Self.digest(fingerprint)
         return report

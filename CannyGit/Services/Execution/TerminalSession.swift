@@ -135,7 +135,7 @@ final class TerminalSession: Identifiable {
         guard isActive, descriptor >= 0 || phase == .starting else { return }
         // Keep a large paste bounded; do not silently drop a partial command.
         guard pendingInput.count + data.count <= 1024 * 1024 else {
-            errorMessage = "입력 대기열이 가득 찼습니다. 붙여넣기 크기를 줄여 다시 시도하세요."
+            errorMessage = "입력 대기열이 가득 찼습니다. 붙여넣기를 줄여 다시 시도"
             return
         }
         pendingInput.append(data)

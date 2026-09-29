@@ -17,7 +17,7 @@ struct ToolSettingsView: View {
                     TextField(kind.title, text: Binding(get: { paths[kind] ?? "" }, set: {
                         paths[kind] = $0; checks.removeValue(forKey: kind); saved = false
                     }))
-                    Button("찾아보기…") { browse(kind) }
+                    Button("찾아보기") { browse(kind) }
                     if let options = candidates[kind], !options.isEmpty {
                         Menu("발견한 경로") {
                             ForEach(options, id: \.self) { path in

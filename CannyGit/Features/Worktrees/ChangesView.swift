@@ -53,7 +53,7 @@ struct ChangesView: View {
                     if selectedFile != nil, let document, !document.text.isEmpty {
                         DiffTextView(text: document.text, highlighted: selectedFile?.isUntracked != true)
                     } else {
-                        ContentUnavailableView(selectedFile == nil ? "파일을 선택하세요" : "표시할 diff가 없습니다",
+                        ContentUnavailableView(selectedFile == nil ? "파일 선택" : "표시할 diff가 없습니다",
                             systemImage: "doc.text.magnifyingglass")
                     }
                 }.frame(minHeight: 150)

@@ -14,10 +14,10 @@ struct TaskGroupsView: View {
                 Text("저장소 공통 실행 그룹").font(.headline)
                 Spacer()
                 Button("그룹 추가", systemImage: "plus") {
-                    editing = TaskGroupDefinition(repositoryID: tree.repositoryID, name: "새 그룹")
+                    editing = TaskGroupDefinition(repositoryID: tree.repositoryID, name: String(localized: "새 그룹"))
                 }.disabled(!tree.canExecute).accessibilityIdentifier("addTaskGroup")
             }
-            Text("단계는 순서대로, 같은 단계의 작업은 병렬로 실행합니다. 서버는 마지막 단계에 두세요.")
+            Text("단계는 순서대로, 같은 단계의 작업은 병렬 실행. 서버는 마지막 단계")
                 .font(.caption).foregroundStyle(.secondary)
             List(definitions) { definition in
                 VStack(alignment: .leading, spacing: 8) {
@@ -49,7 +49,7 @@ struct TaskGroupsView: View {
                 }
             }
             .overlay {
-                if definitions.isEmpty { ContentUnavailableView("실행 그룹을 만드세요", systemImage: "square.stack.3d.up",
+                if definitions.isEmpty { ContentUnavailableView("실행 그룹", systemImage: "square.stack.3d.up",
                     description: Text("예: 설치 → 프런트엔드 + 백엔드")) }
             }
         }.padding(12)

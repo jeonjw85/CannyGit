@@ -16,7 +16,7 @@ struct TaskListView: View {
                     ForEach(TaskDetector.managers, id: \.self) { Text($0).tag($0) }
                 }.frame(width: 150)
                 Button("재탐지") { detect() }.disabled(!tree.canExecute)
-                Button { editing = TaskDefinition(name: "새 작업", command: .shell(""), directory: directory) }
+                Button { editing = TaskDefinition(name: String(localized: "새 작업"), command: .shell(""), directory: directory) }
                     label: { Image(systemName: "plus") }.help("작업 직접 등록")
                     .accessibilityIdentifier("addTask")
             }
@@ -69,7 +69,7 @@ struct TaskListView: View {
                     Text("디렉터리: \(task.directory) · \(task.kind.title)").font(.caption2).foregroundStyle(.secondary)
                     if let source = task.source { Text(source).font(.caption2).foregroundStyle(.secondary).lineLimit(1).truncationMode(.middle) }
                     if let notice = candidate.notice { Text(notice).font(.caption2).foregroundStyle(.secondary).lineLimit(3) }
-                    if candidate.needsPackageManager { Text("실행기를 선택한 뒤 재탐지하세요.").font(.caption).foregroundStyle(.orange) }
+                    if candidate.needsPackageManager { Text("실행기 선택 후 재탐지").font(.caption).foregroundStyle(.orange) }
                 }
                 .padding(.vertical, 5)
                 .contextMenu {
@@ -82,7 +82,7 @@ struct TaskListView: View {
             }
             .overlay {
                 if model.candidates(for: tree).isEmpty && !model.tasks.loading.contains(tree.id) {
-                    ContentUnavailableView("작업을 등록하세요", systemImage: "play.rectangle",
+                    ContentUnavailableView("작업 등록", systemImage: "play.rectangle",
                         description: Text("프로젝트 파일에서 명령을 탐지하거나 + 버튼으로 직접 등록할 수 있습니다."))
                 }
             }

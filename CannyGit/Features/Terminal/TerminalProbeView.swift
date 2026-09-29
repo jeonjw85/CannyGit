@@ -51,7 +51,7 @@ struct TerminalProbeView: View {
                 } else {
                     ContentUnavailableView(
                         "터미널 검증 준비", systemImage: "terminal",
-                        description: Text("폴더를 선택하고 시작하세요. 한글 입력, vim, 크기 변경과 작업 종료를 확인할 수 있습니다.")
+                        description: Text("폴더 선택 후 시작. 한글 입력, vim, 크기 변경, 작업 종료 확인")
                     )
                 }
             }

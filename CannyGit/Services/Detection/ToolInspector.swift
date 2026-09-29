@@ -30,7 +30,7 @@ actor ToolInspector {
 
     func inspect(kind: ToolKind, path: String, execute: Bool) async -> ToolCheck {
         guard path.hasPrefix("/"), !path.utf8.contains(0) else {
-            return ToolCheck(valid: false, detail: String(localized: "절대 경로를 선택하세요."))
+            return ToolCheck(valid: false, detail: String(localized: "절대 경로 선택"))
         }
         if kind == .editor {
             let url = URL(fileURLWithPath: path)

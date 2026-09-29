@@ -63,11 +63,11 @@ struct TaskEditorView: View {
                         Button("인자 추가", systemImage: "plus") { arguments.append(Argument(value: "")) }
                     }
                 }
-                Text("실행 방식을 바꾸면 명령을 직접 확인하세요. 셸 명령은 선택한 셸의 -lc 모드로 실행합니다.")
+                Text("실행 방식을 바꾸면 명령을 직접 확인. 셸 명령은 선택한 셸의 -lc 모드로 실행")
                     .font(.caption).foregroundStyle(.secondary)
                 HStack {
                     TextField("상대 작업 디렉터리", text: $definition.directory)
-                    Button("선택…") {
+                    Button("선택") {
                         Task {
                             do { if let path = try await model.chooseTaskDirectory(tree) { definition.directory = path } }
                             catch { self.error = error.localizedDescription }
@@ -79,7 +79,7 @@ struct TaskEditorView: View {
                 TextField("예상 포트 (쉼표 구분)", text: $ports)
                 TextField("서버 URL (선택)", text: $definition.serverURL)
                 TextField("환경 변수 참조 (KEY=기존_환경변수명)", text: $environment, axis: .vertical).lineLimit(2...5)
-                Text("환경 변수의 이름만 저장합니다. 비밀 값은 이 입력란에 넣지 마세요.").font(.caption).foregroundStyle(.secondary)
+                Text("환경 변수 이름만 저장. 비밀 값은 넣지 않음").font(.caption).foregroundStyle(.secondary)
                 }
                 Picker("저장 범위", selection: $shared) {
                     Text("저장소 공통").tag(true)
@@ -101,17 +101,17 @@ struct TaskEditorView: View {
 
     private func save() {
         do {
-            guard !definition.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw ExecutionError(message: "작업 이름을 입력하세요.") }
+            guard !definition.name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { throw ExecutionError(message: "작업 이름 입력") }
             if shellMode {
-                guard !shellCommand.isEmpty else { throw ExecutionError(message: "실행할 명령을 입력하세요.") }
+                guard !shellCommand.isEmpty else { throw ExecutionError(message: "실행할 명령 입력") }
                 definition.command = .shell(shellCommand)
             } else {
-                guard !executable.isEmpty else { throw ExecutionError(message: "실행 파일을 지정하세요.") }
+                guard !executable.isEmpty else { throw ExecutionError(message: "실행 파일 지정") }
                 definition.command = .executable(executable, arguments.map(\.value))
             }
             definition.expectedPorts = try ports.split(separator: ",").map {
                 guard let port = Int($0.trimmingCharacters(in: .whitespaces)), (1...65535).contains(port) else {
-                    throw ExecutionError(message: "예상 포트는 1~65535 사이 숫자를 쉼표로 구분하세요.")
+                    throw ExecutionError(message: "예상 포트는 1~65535, 쉼표로 구분")
                 }
                 return port
             }
@@ -119,7 +119,7 @@ struct TaskEditorView: View {
             for line in environment.split(separator: "\n") {
                 let pair = line.split(separator: "=", maxSplits: 1).map { $0.trimmingCharacters(in: .whitespaces) }
                 guard pair.count == 2, pair.allSatisfy({ $0.range(of: "^[A-Za-z_][A-Za-z0-9_]*$", options: .regularExpression) != nil }), references[pair[0]] == nil else {
-                    throw ExecutionError(message: "환경 변수 참조는 중복 없이 KEY=SOURCE_NAME 형식으로 입력하세요.")
+                    throw ExecutionError(message: "환경 변수 참조는 중복 없이 KEY=SOURCE_NAME")
                 }
                 references[pair[0]] = pair[1]
             }

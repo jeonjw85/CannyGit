@@ -58,12 +58,12 @@ struct WorktreeDetailView: View {
             VStack(alignment: .leading, spacing: 18) {
                 GroupBox("Git 상태") {
                     VStack(alignment: .leading, spacing: 8) {
-                        LabeledContent("역할", value: tree.isBare ? "bare" : (tree.isMain ? "메인 워크트리" : "linked worktree"))
+                        LabeledContent("역할", value: tree.isBare ? "bare" : (tree.isMain ? String(localized: "메인 워크트리") : "linked worktree"))
                         LabeledContent("HEAD", value: tree.status?.isUnborn == true ? "첫 커밋 전" : String((tree.status?.head ?? tree.head ?? "—").prefix(12)))
                         if let status = tree.status {
                             LabeledContent("staged / unstaged", value: "\(status.staged) / \(status.unstaged)")
                             LabeledContent("미추적 / 충돌", value: "\(status.untracked) / \(status.conflicts)")
-                            LabeledContent("upstream", value: status.upstream ?? "미설정")
+                            LabeledContent("upstream", value: status.upstream ?? String(localized: "미설정"))
                             if let ahead = status.ahead, let behind = status.behind {
                                 LabeledContent("ahead / behind", value: "↑\(ahead) / ↓\(behind)")
                             }
@@ -73,7 +73,7 @@ struct WorktreeDetailView: View {
                         }
                         if let locked = tree.locked { Label("잠김: \(locked)", systemImage: "lock") }
                         if let prunable = tree.prunable { Label("prunable: \(prunable)", systemImage: "exclamationmark.triangle") }
-                        if tree.isMissing { Label("경로가 없습니다. 저장소 경로를 다시 연결하세요.", systemImage: "folder.badge.questionmark") }
+                        if tree.isMissing { Label("경로가 없습니다. 저장소 경로를 다시 연결", systemImage: "folder.badge.questionmark") }
                     }.frame(maxWidth: .infinity, alignment: .leading).padding(8)
                 }
                 GroupBox("세션") {

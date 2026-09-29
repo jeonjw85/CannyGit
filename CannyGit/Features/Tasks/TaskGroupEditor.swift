@@ -60,7 +60,7 @@ struct TaskGroupEditor: View {
                                         Button("참조 제거") { stage.taskIDs.removeAll { $0 == id } }
                                     }.foregroundStyle(.orange)
                                 }
-                                if candidates.isEmpty { Text("작업 탭에서 먼저 작업을 탐지하거나 등록하세요.").foregroundStyle(.secondary) }
+                                if candidates.isEmpty { Text("작업 탭에서 먼저 작업 탐지 또는 등록").foregroundStyle(.secondary) }
                             }.padding(8)
                         } label: {
                             Text("단계 \((group.stages.firstIndex { $0.id == stage.id } ?? 0) + 1)")

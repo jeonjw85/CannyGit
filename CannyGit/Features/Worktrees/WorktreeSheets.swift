@@ -24,16 +24,16 @@ struct CreateWorktreeSheet: View {
             }.pickerStyle(.segmented)
             if existing {
                 Picker("로컬 브랜치", selection: $existingBranch) {
-                    Text("선택하세요").tag("")
+                    Text("선택").tag("")
                     ForEach(branches.filter(\.isLocal)) { branch in
-                        Text(branch.name + (occupied(branch.ref) ? " · 사용 중" : ""))
+                        Text(branch.name + (occupied(branch.ref) ? String(localized: " · 사용 중") : ""))
                             .tag(branch.name).disabled(occupied(branch.ref))
                     }
                 }
             } else {
                 TextField("새 브랜치 이름", text: $branch).accessibilityIdentifier("newBranchName")
                 Picker("기준 브랜치", selection: $startPoint) {
-                    Text("선택하세요").tag("")
+                    Text("선택").tag("")
                     ForEach(branches) { Text($0.name).tag($0.ref) }
                 }
             }
@@ -41,7 +41,7 @@ struct CreateWorktreeSheet: View {
                 .accessibilityIdentifier("newWorktreePath")
             Text("브랜치 이름과 폴더 이름은 별개입니다. 경로를 직접 수정할 수 있습니다.")
                 .font(.caption).foregroundStyle(.secondary)
-            if branches.isEmpty { Text("기준 브랜치가 없습니다. 첫 커밋이 있는 저장소인지 확인하세요.").foregroundStyle(.orange) }
+            if branches.isEmpty { Text("기준 브랜치가 없습니다. 첫 커밋이 있는 저장소인지 확인").foregroundStyle(.orange) }
             if let error { Text(error).foregroundStyle(.red).textSelection(.enabled) }
             HStack {
                 Button("취소") { dismiss() }.keyboardShortcut(.cancelAction).disabled(busy)

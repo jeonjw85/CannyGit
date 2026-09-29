@@ -76,7 +76,7 @@ final class DashboardModel {
         guard !isTerminating, !isLoadingSettings, !isRegistering, changingRepositories.isEmpty,
             !isLoaded || restoreBackup || settingsError != nil else { return }
         guard !execution.hasActiveSession else {
-            errorMessage = String(localized: "설정을 다시 읽기 전에 실행 중인 세션을 정리하세요.")
+            errorMessage = String(localized: "설정을 다시 읽기 전에 실행 중인 세션 정리")
             return
         }
         isLoadingSettings = true
@@ -123,7 +123,7 @@ final class DashboardModel {
     func reloadSettings() async {
         guard !isTerminating, !isLoadingSettings, !isRegistering, changingRepositories.isEmpty else { return }
         guard !execution.hasActiveSession else {
-            errorMessage = String(localized: "설정을 다시 읽기 전에 실행 중인 세션을 정리하세요.")
+            errorMessage = String(localized: "설정을 다시 읽기 전에 실행 중인 세션 정리")
             return
         }
         isLoaded = false
@@ -149,7 +149,7 @@ final class DashboardModel {
 
     func register(_ url: URL, reconnecting id: UUID? = nil) async throws {
         guard !isTerminating else { throw CancellationError() }
-        guard isLoaded else { throw ExecutionError(message: "설정을 복구한 뒤 저장소를 등록하세요.") }
+        guard isLoaded else { throw ExecutionError(message: "설정 복구 후 저장소 등록") }
         if let id { try beginRepositoryChange(id) }
         registeringCount += 1
         defer {
@@ -167,7 +167,7 @@ final class DashboardModel {
             guard !execution.entries.contains(where: { $0.repositoryID == id && $0.session.isActive }),
                 !execution.groups.runs.contains(where: { $0.repositoryID == id && execution.groups.canStop($0, execution: execution) }),
                 !identities.contains(where: { execution.pendingCount(worktreeID: $0.id) > 0 }) else {
-                throw ExecutionError(message: "재연결 전에 이 저장소의 실행 세션을 중지하세요.")
+                throw ExecutionError(message: "재연결 전에 이 저장소의 실행 세션 중지")
             }
             let oldCommon = settings.repositories[index].commonDirectory
             for identityIndex in settings.worktreeIdentities.indices where settings.worktreeIdentities[identityIndex].repositoryID == id {
@@ -308,7 +308,7 @@ final class DashboardModel {
             for var previous in worktrees where previous.repositoryID == repository.id && !trees.contains(where: { $0.id == previous.id }) {
                 if !execution.entries(for: previous.id).isEmpty {
                     previous.isMissing = true
-                    previous.error = String(localized: "Git 목록에서 제거되었습니다. 열린 세션과 출력을 확인하고 정리하세요.")
+                    previous.error = String(localized: "Git 목록에서 제거되었습니다. 열린 세션과 출력 확인 후 정리")
                     statusGenerations[previous.id, default: 0] += 1
                     trees.append(previous)
                 }
@@ -383,7 +383,7 @@ final class DashboardModel {
 
     func revealSession(_ entry: SessionEntry, stayInActivity: Bool = false) {
         guard worktrees.contains(where: { $0.id == entry.worktreeID }) else {
-            errorMessage = String(localized: "워크트리를 찾을 수 없습니다. 저장소를 새로고침하세요.")
+            errorMessage = String(localized: "워크트리를 찾을 수 없습니다. 저장소 새로고침")
             return
         }
         search = ""
@@ -500,7 +500,7 @@ final class DashboardModel {
     private func beginRepositoryChange(_ id: UUID) throws {
         guard isLoaded, !isTerminating, settings.repositories.contains(where: { $0.id == id }) else { throw CancellationError() }
         guard changingRepositories.insert(id).inserted else {
-            throw ExecutionError(message: "저장소 변경 작업이 진행 중입니다. 완료 후 다시 시도하세요.")
+            throw ExecutionError(message: "저장소 변경 작업이 진행 중입니다. 완료 후 다시 시도")
         }
     }
 
@@ -540,7 +540,7 @@ final class DashboardModel {
             let root = URL(fileURLWithPath: tree.path).resolvingSymlinksInPath().standardizedFileURL.path
             let path = selected.resolvingSymlinksInPath().standardizedFileURL.path
             if path == root { return "." }
-            guard path.hasPrefix(root + "/") else { throw ExecutionError(message: "워크트리 안의 폴더를 선택하세요.") }
+            guard path.hasPrefix(root + "/") else { throw ExecutionError(message: "워크트리 안의 폴더 선택") }
             return String(path.dropFirst(root.count + 1))
         }.value
     }

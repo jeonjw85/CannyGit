@@ -120,7 +120,7 @@ struct ActivityView: View {
             .overlay {
                 if displayed.isEmpty && displayedGroups.isEmpty {
                     ContentUnavailableView("표시할 실행이 없습니다", systemImage: "play.rectangle",
-                        description: Text("필터를 바꾸거나 워크트리에서 작업을 시작하세요."))
+                        description: Text("필터를 바꾸거나 워크트리에서 작업 시작"))
                 }
             }
             Text("기록은 현재 앱 세션 기준입니다. 종료한 작업 탭은 최근 20개를 유지합니다.")

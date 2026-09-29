@@ -119,7 +119,7 @@ actor ProcessSupervisor {
             if try members().isEmpty { return }
             try await Task.sleep(for: .milliseconds(40))
         } while ContinuousClock.now < deadline
-        throw ExecutionError(message: "프로세스 정리가 끝나지 않았습니다. 중지를 다시 시도하세요.")
+        throw ExecutionError(message: "프로세스 정리가 끝나지 않았습니다. 중지를 다시 시도")
     }
 
     private func signal(_ process: ProcessSnapshot, _ signal: Int32) throws {

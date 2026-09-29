@@ -26,7 +26,7 @@ struct TaskGroupDefinition: Codable, Identifiable, Sendable, Equatable {
             (1...16).contains(stages.count), stages.allSatisfy({ !$0.taskIDs.isEmpty }),
             (1...32).contains(ids.count), Set(ids).count == ids.count,
             Set(references.map(\.id)) == Set(ids), references.count == ids.count else {
-            throw ExecutionError(message: "그룹 이름과 단계별 작업을 확인하세요. 작업은 중복 없이 최대 32개, 단계는 최대 16개입니다.")
+            throw ExecutionError(message: "그룹 이름과 단계별 작업 확인. 작업은 중복 없이 최대 32개, 단계는 최대 16개")
         }
     }
 
@@ -36,7 +36,7 @@ struct TaskGroupDefinition: Codable, Identifiable, Sendable, Equatable {
         for (index, tasks) in plan.enumerated() {
             guard tasks.map(\.id) == stages[index].taskIDs else { throw ExecutionError(message: "그룹의 작업 구성이 변경되었습니다.") }
             if index < plan.count - 1 && tasks.contains(where: { $0.kind == .server }) {
-                throw ExecutionError(message: "서버 작업은 마지막 단계에 두세요. 앞 단계의 일회성 작업이 성공한 뒤 다음 단계를 시작합니다.")
+                throw ExecutionError(message: "서버 작업은 마지막 단계. 앞 단계의 일회성 작업이 성공한 뒤 다음 단계 시작")
             }
         }
     }

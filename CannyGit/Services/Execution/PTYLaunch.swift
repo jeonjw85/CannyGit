@@ -81,7 +81,7 @@ enum PTYLauncher {
             configuration.executable.hasPrefix("/"),
             !strings.contains(where: { $0.utf8.contains(0) })
         else {
-            throw ExecutionError(message: "실행 경로와 작업 디렉터리를 확인하세요.")
+            throw ExecutionError(message: "실행 경로와 작업 디렉터리 확인")
         }
 
         return try withCStringArray(arguments) { argv in

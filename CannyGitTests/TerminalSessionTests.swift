@@ -22,7 +22,7 @@ struct TerminalSessionTests {
         let wrongDirectory = makeSession(directory: URL(fileURLWithPath: "/no/such/canny-directory"))
         await wrongDirectory.start()
         #expect(wrongDirectory.phase == .failed)
-        #expect(wrongDirectory.errorMessage?.contains("작업 디렉터리") == true)
+        #expect(wrongDirectory.errorMessage?.contains(String(localized: "작업 디렉터리 열기 실패")) == true)
 
         let genuine = makeSession(arguments: ["-fc", "exit 127"])
         await genuine.start()

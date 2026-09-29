@@ -20,7 +20,7 @@ extension DashboardModel {
 
     func deleteGroup(_ group: TaskGroupDefinition) async throws {
         guard !execution.groups.runs.contains(where: { $0.definition.id == group.id && execution.groups.canStop($0, execution: execution) }) else {
-            throw ExecutionError(message: "실행 중인 그룹을 먼저 중지하세요.")
+            throw ExecutionError(message: "실행 중인 그룹을 먼저 중지")
         }
         settings.taskGroups.removeAll { $0.id == group.id }
         await save()

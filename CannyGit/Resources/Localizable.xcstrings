@@ -1,433 +1,4108 @@
 {
-  "sourceLanguage" : "ko",
-  "strings" : {
+  "sourceLanguage": "ko",
+  "strings": {
+    " · 사용 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": " · In use"
+          }
+        }
+      }
+    },
     "%@ · %@": {},
     "%@ › %@": {},
+    "%@ 탭 닫기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close %@ tab"
+          }
+        }
+      }
+    },
+    "%@: %@ (%d)": {},
     "%@:%lld": {},
-    "%lld분 %lld초": {},
-    "%lld시간 %lld분": {},
-    "Diff 영역": {},
-    "HTTP 열기 · %lld": {},
-    "LISTEN %lld": {},
-    "↑ ↓ 선택 · Return 실행 · Esc 닫기": {},
-    "검색 결과 없음": {},
-    "공통으로 저장하면 현재 워크트리의 같은 작업 재정의를 해제합니다. 다른 워크트리의 재정의는 유지합니다.": {},
-    "그룹": {},
-    "그룹 설정 삭제": {},
-    "그룹 설정 저장 실패: %@": {},
-    "그룹 설정을 삭제할까요?": {},
-    "그룹 실행": {},
-    "그룹 실행 · %@": {},
-    "그룹 이름": {},
-    "그룹 이름과 단계별 작업을 확인하세요. 작업은 중복 없이 최대 32개, 단계는 최대 16개입니다.": {},
-    "그룹 작업": {},
-    "그룹 작업 실패: %@ · %@": {},
-    "그룹 중지": {},
-    "그룹 중지 · %@": {},
-    "그룹 추가": {},
-    "그룹 편집": {},
-    "그룹의 작업 구성이 변경되었습니다.": {},
-    "그룹의 작업을 찾을 수 없습니다: %@": {},
-    "기록은 현재 앱 세션 기준입니다. 종료한 작업 탭은 최근 20개를 유지합니다.": {},
-    "다른 저장소의 그룹입니다.": {},
-    "다음 단계 추가": {},
-    "단계 %lld": {},
-    "단계 %lld / %lld · 시작한 작업 %lld개": {},
-    "단계 삭제": {},
-    "단계 아래로": {},
-    "단계 위로": {},
-    "단계 이름 (선택)": {},
-    "단계는 순서대로, 같은 단계의 작업은 병렬로 실행합니다. 서버는 마지막 단계에 두세요.": {},
-    "닫기": {},
-    "로그인 셸 명령 모드 실행 확인": {},
-    "명령 팔레트": {},
-    "명령 팔레트…": {},
-    "모든 실행을 중지할까요?": {},
-    "모든 저장소의 작업·터미널": {},
-    "미추적 파일 확장": {},
-    "미추적 파일 확장을 켜고 개별 파일을 선택하세요.": {},
-    "미추적 파일에는 staged 변경이 없습니다.": {},
-    "미추적 파일의 읽기 전용 내용입니다.": {},
-    "바이너리 또는 UTF-8이 아닌 파일입니다.": {},
-    "발견한 경로": {},
-    "버전·실행 진단": {},
-    "변경 있는 워크트리": {},
-    "변경 있음": {},
-    "빈 문자열도 인자로 전달됩니다": {},
-    "삭제": {},
-    "서버 작업은 마지막 단계에 두세요. 앞 단계의 일회성 작업이 성공한 뒤 다음 단계를 시작합니다.": {},
-    "선택…": {},
-    "선택한 영역에 변경 내용이 없습니다.": {},
-    "설치 경로 찾기": {},
-    "성공": {},
-    "세션 %lld개와 실행 그룹 %lld개를 정리합니다. 소유한 자식 작업도 함께 중지합니다.": {},
-    "셸": {},
-    "실패": {},
-    "실행 %lld": {},
-    "실행 가능한 앱 번들을 찾지 못했습니다.": {},
-    "실행 그룹": {},
-    "실행 그룹 편집": {},
-    "실행 그룹을 만드세요": {},
-    "실행 단계가 설정과 다릅니다.": {},
-    "실행 실패 (%d): %@": {},
-    "실행 중인 그룹을 먼저 중지하세요.": {},
-    "실행 파일 확인": {},
-    "실행 현황": {},
-    "실행 현황 열기": {},
-    "심볼릭 링크 대상 경로입니다. 대상 파일 내용은 읽지 않습니다.": {},
-    "심볼릭 링크 읽기 실패": {},
-    "앞 단계가 성공해야 다음 단계를 시작합니다. 한 단계에 선택한 작업은 동시에 실행합니다. 실패·취소 시 그룹이 시작한 세션만 정리합니다.": {},
-    "앱 번들과 실행 파일 확인": {},
-    "에디터 앱": {},
-    "예: 설치 → 프런트엔드 + 백엔드": {},
-    "예상 포트 조회 실패: %@": {},
-    "워크트리 기준 파일 경로가 올바르지 않습니다.": {},
-    "워크트리 안의 폴더를 선택하세요.": {},
-    "워크트리 열기 실패": {},
-    "워크트리 전용": {},
-    "워크트리 필터": {},
-    "워크트리로 이동": {},
-    "워크트리를 찾을 수 없습니다. 저장소를 새로고침하세요.": {},
-    "이 앱이 시작한 작업과 터미널을 함께 중지합니다.": {},
-    "이 워크트리 재정의 해제": {},
-    "이 워크트리에서 같은 그룹이 이미 실행 중입니다.": {},
-    "이미 실행 중인 작업이 그룹에 포함되어 있습니다: %@": {},
-    "인자 · 한 행이 한 인자입니다": {},
-    "인자 삭제": {},
-    "인자 아래로 이동": {},
-    "인자 위로 이동": {},
-    "인자 추가": {},
-    "일반 파일만 미리 볼 수 있습니다.": {},
-    "읽기 전용": {},
-    "자동 탐지": {},
-    "작업 실행 · %@": {},
-    "작업 탭에서 먼저 작업을 탐지하거나 등록하세요.": {},
-    "저장 범위": {},
-    "저장소 공통": {},
-    "저장소 공통 설정 초기화": {},
-    "저장소 공통 실행 그룹": {},
-    "저장소·워크트리·작업 검색": {},
-    "전체": {},
-    "전체 기록": {},
-    "전체 새로고침": {},
-    "전체 실행 현황": {},
-    "전체 중지": {},
-    "절대 경로를 선택하세요.": {},
-    "접근·조회 오류": {},
-    "종료": {},
-    "준비 %lld": {},
-    "준비 중": {},
-    "중지 중": {},
-    "진단은 Git 버전과 셸의 -lc 명령 모드를 실행합니다. 셸 초기화 파일에 따라 Finder 실행 환경의 PATH가 달라질 수 있습니다.": {},
-    "참조 제거": {},
-    "찾아보기…": {},
-    "최근 실행 · %@ · %@": {},
-    "최근 작업 실패": {},
-    "출력 보기": {},
-    "출력 보기 · %@": {},
-    "터미널 숨기기": {},
-    "터미널 열기 · %@": {},
-    "터미널 최대화 / 복원": {},
-    "터미널 탭 목록": {},
-    "터미널 표시 전환": {},
-    "파일 경로 열기 실패": {},
-    "파일 읽기 실패": {},
-    "파일 정보 조회 실패": {},
-    "파일 형식이 변경되었습니다. 다시 조회하세요.": {},
-    "파일을 선택하세요": {},
-    "파일이 미리 보기 한도를 초과했습니다. 에디터에서 확인하세요.": {},
-    "파일이 없거나 실행 권한이 없습니다.": {},
-    "패키지 매니저를 선택한 뒤 그룹을 실행하세요.": {},
-    "표시할 diff가 없습니다": {},
-    "표시할 실행": {},
-    "표시할 실행이 없습니다": {},
-    "필터를 바꾸거나 워크트리에서 작업을 시작하세요.": {},
-    "현재 워크트리": {},
-    "현재 워크트리에서 diff를 읽을 수 없습니다.": {},
-    "현재 워크트리에서 그룹을 실행할 수 없습니다.": {},
-    "확인 시각: %@": {},
-    "환경 변수·포트·서버 URL": {},
-    "%@ 탭 닫기": {},
     "%@:%lld · PID %d": {},
     "%lld": {},
-    "%lld개 세션의 셸과 자식 작업을 함께 중지합니다.": {},
-    "%lld초": {},
+    "%lld개 세션의 셸과 자식 작업을 함께 중지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stops the shell and child processes in %lld sessions."
+          }
+        }
+      }
+    },
+    "%lld분 %lld초": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min %lld sec"
+          }
+        }
+      }
+    },
+    "%lld시간 %lld분": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld hr %lld min"
+          }
+        }
+      }
+    },
+    "%lld초": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sec"
+          }
+        }
+      }
+    },
+    "0단계 · 터미널과 프로세스 수명 검증": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stage 0 · terminal and process lifetime"
+          }
+        }
+      }
+    },
     ":%lld": {},
-    "Finder에서 실행한 앱의 PATH는 외부 터미널과 다를 수 있습니다. 작업은 로그인 셸의 명령 모드(-lc)를 사용합니다.": {},
-    "Finder에서 열기": {},
-    "Git 경로 또는 출력을 UTF-8로 표현할 수 없습니다.": {},
-    "Git 목록에서 제거되었습니다. 열린 세션과 출력을 확인하고 정리하세요.": {},
-    "Git 상태": {},
-    "Git 실행 경로": {},
-    "Git 오류 (%d): %@": {},
-    "Git 출력 형식을 해석할 수 없습니다. 조회 결과를 사용하지 않습니다.": {},
+    "CannyGit": {
+      "shouldTranslate": false
+    },
+    "CannyGit 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open CannyGit"
+          }
+        }
+      }
+    },
+    "Diff 영역": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diff area"
+          }
+        }
+      }
+    },
+    "Finder에서 실행한 앱의 PATH는 외부 터미널과 다를 수 있습니다. 작업은 로그인 셸의 명령 모드(-lc)를 사용합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An app launched from Finder may have a different PATH than an external terminal. Tasks use the login shell command mode (-lc)."
+          }
+        }
+      }
+    },
+    "Finder에서 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reveal in Finder"
+          }
+        }
+      }
+    },
+    "Git 경로 또는 출력을 UTF-8로 표현할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Git path or output is not valid UTF-8."
+          }
+        }
+      }
+    },
+    "Git 목록에서 제거되었습니다. 열린 세션과 출력 확인 후 정리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removed from the Git list. Check open sessions and output, then clean up"
+          }
+        }
+      }
+    },
+    "Git 상태": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Git status"
+          }
+        }
+      }
+    },
+    "Git 실행 경로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Git path"
+          }
+        }
+      }
+    },
+    "Git 오류 (%d): %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Git error (%d): %@"
+          }
+        }
+      }
+    },
+    "Git 출력 형식을 해석할 수 없습니다. 조회 결과를 사용하지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot parse Git output. The result is not used."
+          }
+        }
+      }
+    },
     "HEAD": {},
-    "HTTPS로 열기": {},
-    "HTTP로 열기": {},
+    "HTTP 열기 · %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open HTTP · %lld"
+          }
+        }
+      }
+    },
+    "HTTPS로 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open with HTTPS"
+          }
+        }
+      }
+    },
+    "HTTP로 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open with HTTP"
+          }
+        }
+      }
+    },
+    "LISTEN %lld": {},
+    "Option 키를 Meta 키로 사용": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use Option as Meta"
+          }
+        }
+      }
+    },
     "PID %d": {},
-    "Option 키를 Meta 키로 사용": {},
-    "Python 프로젝트입니다. 사용할 실행기와 작업 명령을 직접 등록하세요.": {},
+    "PID %d · 소유 프로세스 %lld개": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PID %d · %lld owned processes"
+          }
+        }
+      }
+    },
+    "PTY 시작 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to start PTY"
+          }
+        }
+      }
+    },
+    "Python 프로젝트. 실행기와 작업 명령 직접 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Python project. Add a runner and task command"
+          }
+        }
+      }
+    },
     "SwiftTerm 1.19.0 · MIT License": {},
-    "SwiftTerm 라이선스": {},
+    "SwiftTerm 라이선스": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SwiftTerm license"
+          }
+        }
+      }
+    },
     "ahead / behind": {},
     "bare": {},
     "clean": {},
-    "ignored 항목도 삭제됩니다 (%lld항목).": {},
-    "package.json scripts에는 문자열 명령만 사용할 수 있습니다.": {},
-    "package.json의 최상위 값은 객체여야 합니다.": {},
-    "package.json이 읽기 한도를 초과했습니다.": {},
+    "ignored 항목도 삭제됩니다 (%lld항목).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ignored items are also deleted (%lld)."
+          }
+        }
+      }
+    },
+    "package.json scripts에는 문자열 명령만 사용할 수 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "package.json scripts must be string commands."
+          }
+        }
+      }
+    },
+    "package.json의 최상위 값은 객체여야 합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The top-level package.json value must be an object."
+          }
+        }
+      }
+    },
+    "package.json이 읽기 한도를 초과했습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "package.json exceeds the read limit."
+          }
+        }
+      }
+    },
     "prunable: %@": {},
     "staged / unstaged": {},
     "submodule: %@": {},
     "upstream": {},
     "← %@": {},
-    "같은 작업이 이미 실행 중입니다.": {},
-    "개요": {},
-    "검색 조건과 저장소 경로를 확인하세요.": {},
-    "경로 누락": {},
-    "경로 복사": {},
-    "경로가 없습니다. 저장소 경로를 다시 연결하세요.": {},
-    "기본 셸": {},
-    "기존 Git 저장소 폴더를 선택하거나 사이드바에 끌어 놓으세요.": {},
-    "기존 로컬 브랜치": {},
-    "기준 브랜치": {},
-    "기준 브랜치가 없습니다. 첫 커밋이 있는 저장소인지 확인하세요.": {},
-    "다른 워크트리가 이 브랜치를 사용하고 있습니다.": {},
-    "다시 연결": {},
-    "다시 읽기": {},
-    "다크": {},
-    "대상 폴더가 비어 있지 않습니다.": {},
-    "도구": {},
-    "도구 설정 저장": {},
-    "등록": {},
-    "등록 해제": {},
-    "디렉터리: %@ · %@": {},
-    "라이선스": {},
-    "라이트": {},
-    "로그 상한을 넘어 오래된 출력이 잘렸습니다.": {},
-    "로컬 브랜치": {},
-    "리스닝 주소를 해석할 수 없습니다.": {},
-    "마지막 로컬 fetch 결과 기준입니다.": {},
-    "메인·bare·잠김·누락 워크트리는 삭제할 수 없습니다.": {},
-    "명령 실행 시간이 초과되었습니다.": {},
-    "명령 시작 실패": {},
-    "명령 출력 읽기 실패 (%d)": {},
-    "명령 출력 한도를 초과했습니다. 결과를 표시할 수 없습니다.": {},
-    "명령의 실행 경로 또는 인자가 올바르지 않습니다.": {},
-    "모양": {},
-    "미추적 / 충돌": {},
-    "미추적 디렉터리는 항목 단위로 요약됩니다.": {},
-    "변경": {},
-    "변경 %lld항목": {},
-    "변경 또는 미추적 항목이 있는 워크트리는 삭제할 수 없습니다.": {},
-    "변경 사항 없음": {},
-    "브랜치": {},
-    "브랜치 이름과 폴더 이름은 별개입니다. 경로를 직접 수정할 수 있습니다.": {},
-    "브랜치 이름을 직접 입력하세요. 이전 브랜치 표현식은 사용할 수 없습니다.": {},
-    "사용자 설정": {},
-    "사용자 설정 초기화": {},
-    "사용자 중지": {},
-    "사용자 중지 · 종료 코드 %d": {},
-    "사용자 중지 · 신호 %d": {},
-    "서버 종료 · 코드 0": {},
-    "시작: %@\n셸: %@\n디렉터리: %@": {},
-    "삭제 가능 여부 확인 중": {},
-    "상대 작업 디렉터리": {},
-    "상태를 확인할 수 없습니다": {},
-    "새 브랜치": {},
-    "새 브랜치 이름": {},
-    "새 터미널": {},
-    "새로고침": {},
-    "생성": {},
-    "생성할 절대 경로": {},
-    "서버": {},
-    "서버 URL (선택)": {},
-    "서버 URL은 http 또는 https 주소여야 합니다.": {},
-    "선택하세요": {},
-    "선택한 로컬 브랜치가 더 이상 존재하지 않습니다.": {},
-    "선택한 워크트리의 전체 작업 설정을 재정의합니다.": {},
-    "설정 URL 열기": {},
-    "설정 파일이 너무 큽니다.": {},
-    "설정에 중복된 저장소가 있습니다.": {},
-    "설정은 Application Support/CannyGit에 저장합니다. 비밀 환경 변수 값과 실행 중인 PID는 저장하지 않습니다.": {},
-    "설정을 먼저 복구하거나 다시 읽어야 합니다.": {},
-    "설정을 복구한 뒤 저장소를 등록하세요.": {},
-    "설정 다시 읽기": {},
-    "설정을 다시 읽기 전에 실행 중인 세션을 정리하세요.": {},
-    "시작 취소": {},
-    "설정을 읽지 못했습니다: %@": {},
-    "설정을 저장하지 못했습니다": {},
-    "세션": {},
-    "세션 정리가 완료되지 않았습니다.": {},
-    "세션 중지": {},
-    "세션을 중지하고 탭을 닫을까요?": {},
-    "셸 명령": {},
-    "수집: %@": {},
-    "숨긴 작업 복원": {},
-    "시스템": {},
-    "실행": {},
-    "실행 방식": {},
-    "실행 방식을 바꾸면 명령을 직접 확인하세요. 셸 명령은 선택한 셸의 -lc 모드로 실행합니다.": {},
-    "실행 실패": {},
-    "실행 중 · LISTEN 확인": {},
-    "실행 파일": {},
-    "실행 파일 + 인자": {},
-    "실행 파일을 지정하세요.": {},
-    "실행과 로그": {},
-    "실행기": {},
-    "실행기를 선택한 뒤 재탐지하세요.": {},
-    "실행할 명령을 입력하세요.": {},
-    "에디터 앱 경로": {},
-    "에디터 열기": {},
-    "에디터에서 열기": {},
-    "역할": {},
-    "열린 세션을 정리하고 앱의 등록 정보와 작업 설정을 제거합니다. 저장소 파일은 유지됩니다.": {},
-    "열린 세션이 없습니다.": {},
-    "열린 터미널 없음": {},
-    "예: /usr/bin/git, /bin/zsh, /Applications/Visual Studio Code.app": {},
-    "예상 포트 (쉼표 구분)": {},
-    "예상 포트 점유: %@": {},
-    "예상 포트는 1~65535 사이 숫자를 쉼표로 구분하세요.": {},
-    "예상: %@ · LISTEN은 HTTP 정상 응답을 보장하지 않습니다.": {},
-    "완료 · 종료 0": {},
-    "워크트리": {},
-    "워크트리 경로가 기존 경로 또는 Git 메타데이터와 충돌합니다.": {},
-    "워크트리 경로는 절대 경로여야 합니다.": {},
-    "워크트리 연결이 변경되었습니다. 목록을 갱신한 뒤 다시 시도하세요.": {},
-    "워크트리 삭제": {},
-    "워크트리 생성": {},
-    "워크트리 폴더 삭제": {},
-    "워크트리가 생성되었지만 브랜치 연결이 예상과 다릅니다. 목록을 다시 확인하세요.": {},
-    "워크트리를 선택하고 + 버튼을 누르거나 작업을 실행하세요.": {},
-    "워크트리를 선택하세요": {},
-    "유효한 기준 브랜치를 선택하세요. 첫 커밋 전에는 워크트리를 생성할 수 없습니다.": {},
-    "의존성 설치": {},
-    "이 세션의 셸과 자식 작업을 함께 중지합니다.": {},
-    "이 셸의 인자 실행 방식은 지원하지 않습니다. zsh/bash/fish를 선택하거나 셸 명령으로 등록하세요.": {},
-    "이 워크트리에서 숨기기": {},
-    "이 저장소의 워크트리에서 공통으로 사용합니다.": {},
-    "이 폴더 전체가 제거됩니다. 브랜치는 유지됩니다. 열린 작업과 터미널은 먼저 정리합니다.": {},
-    "이름": {},
-    "이름 변경": {},
-    "이름·브랜치·경로 검색": {},
-    "이전 설정 복구": {},
-    "인자 (JSON 문자열 배열)": {},
-    "일회성 작업": {},
-    "자동": {},
-    "자식 프로세스 정리 대기": {},
-    "작업": {},
-    "작업 디렉터리가 없거나 워크트리 바깥을 가리킵니다.": {},
-    "작업 디렉터리는 워크트리 기준 상대 경로여야 합니다.": {},
-    "작업 로그: 실행별 5 MiB / 전체 50 MiB. 완료된 작업 탭은 최근 20개를 유지합니다.": {},
-    "작업 이름과 예상 포트(1~65535)를 확인하세요.": {},
-    "작업 이름을 입력하세요.": {},
-    "작업 직접 등록": {},
-    "작업 편집": {},
-    "작업을 등록하세요": {},
-    "작업을 완료하지 못했습니다": {},
-    "잠김: %@": {},
-    "재실행": {},
-    "재연결 전에 이 저장소의 실행 세션을 중지하세요.": {},
-    "재탐지": {},
-    "저장": {},
-    "저장 다시 시도": {},
-    "저장되지 않은 변경: %@": {},
-    "저장소": {},
-    "저장소 변경 작업이 진행 중입니다. 완료 후 다시 시도하세요.": {},
-    "저장소 공통 설정으로 저장": {},
-    "저장소 등록": {},
-    "저장소 등록…": {},
-    "저장소 등록을 해제할까요?": {},
-    "저장소 이름": {},
-    "저장소의 브랜치와 개발 작업을 한곳에서 관리합니다.": {},
-    "저장했습니다": {},
-    "전체 저장소": {},
-    "접근 불가 · 재연결 필요": {},
-    "정리할 실행 세션: %lld개": {},
-    "조회 실패 · 이전 상태": {},
-    "조회 중": {},
-    "종류": {},
-    "중지하고 닫기": {},
-    "즐겨찾기": {},
-    "즐겨찾기 추가": {},
-    "즐겨찾기 해제": {},
-    "지원하지 않는 설정 버전입니다. 파일을 보존하고 앱 버전을 확인하세요.": {},
-    "창을 닫아도 세션은 유지됩니다. 앱 종료 시에는 실행 중인 세션을 함께 정리합니다.": {},
-    "첫 저장소를 등록하세요": {},
-    "첫 커밋 전": {},
-    "출력 URL": {},
-    "출력 로그 내보내기": {},
-    "충돌 %lld": {},
-    "탐지 상대 디렉터리": {},
-    "탐지 실패 · 이전 결과: %@": {},
-    "탐지 원본이 변경되었습니다. 저장한 명령은 유지됩니다.": {},
-    "탐지 원본이 없거나 탐지 디렉터리가 변경되었습니다.": {},
-    "탐지만으로 명령을 실행하지 않습니다.": {},
-    "터미널": {},
-    "터미널 글자 크기: %lld": {},
-    "터미널 기술 검증": {},
-    "터미널 열기": {},
-    "테마": {},
-    "파일까지 확장": {},
-    "패키지 매니저 단서가 충돌합니다. 사용할 실행기를 선택하세요.": {},
-    "포트 범위가 올바르지 않습니다.": {},
-    "포트 조회 결과의 PID가 올바르지 않습니다.": {},
-    "포트 조회 실패: %@": {},
-    "폴더 삭제": {},
-    "표시 이름": {},
-    "표시할 워크트리가 없습니다": {},
-    "프로젝트 파일에서 명령을 탐지하거나 + 버튼으로 직접 등록할 수 있습니다.": {},
-    "현재 워크트리에서 작업을 시작할 수 없습니다.": {},
-    "현재 워크트리에서 터미널을 시작할 수 없습니다.": {},
-    "확인": {},
-    "환경 변수 참조 (KEY=기존_환경변수명)": {},
-    "환경 변수 참조는 중복 없이 KEY=SOURCE_NAME 형식으로 입력하세요.": {},
-    "환경 변수 참조를 찾을 수 없습니다: %@ ← %@": {},
-    "환경 변수의 이름만 저장합니다. 비밀 값은 이 입력란에 넣지 마세요.": {},
-    "0단계 · 터미널과 프로세스 수명 검증" : {},
-    "%@: %@ (%d)" : {},
-    "CannyGit" : { "shouldTranslate" : false },
-    "CannyGit 열기" : {},
-    "PID %d · 소유 프로세스 %lld개" : {},
-    "PTY 시작 실패" : {},
-    "셸 실행 경로" : {},
-    "소유 프로세스 %d의 상태를 읽을 수 없습니다." : {},
-    "시작" : {},
-    "시작 중" : {},
-    "시작 실패" : {},
-    "시작한 프로세스의 소유 정보를 확인할 수 없습니다." : {},
-    "신호 %d로 종료" : {},
-    "실행 경로와 작업 디렉터리를 확인하세요." : {},
-    "실행 명령 · 비워 두면 대화형 셸" : {},
-    "실행 인자 할당 실패" : {},
-    "실행 중" : {},
-    "실행 중인 터미널을 정리하고 종료할까요?" : {},
-    "실행 파일 시작 실패" : {},
-    "이 세션에서 실행한 셸과 자식 작업을 함께 중지합니다." : {},
-    "입력 대기열이 가득 찼습니다. 붙여넣기 크기를 줄여 다시 시도하세요." : {},
-    "자식 프로세스 / 출력 종료 대기" : {},
-    "작업 디렉터리" : {},
-    "작업 디렉터리 열기 실패" : {},
-    "정리 중" : {},
-    "종료 상태 조회 실패" : {},
-    "종료 상태 확인 실패" : {},
-    "종료 코드 %d" : {},
-    "중지" : {},
-    "중지하고 종료" : {},
-    "취소" : {},
-    "터미널 검증 준비" : {},
-    "터미널 입력 대기 실패" : {},
-    "터미널 입력 전달 실패" : {},
-    "터미널 출력 읽기 실패" : {},
-    "터미널 크기 변경 실패" : {},
-    "폴더 선택" : {},
-    "폴더를 선택하고 시작하세요. 한글 입력, vim, 크기 변경과 작업 종료를 확인할 수 있습니다." : {},
-    "프로세스 %d 중지 실패" : {},
-    "프로세스 목록 조회 실패" : {},
-    "프로세스 목록이 계속 변경되어 정리를 확인할 수 없습니다." : {},
-    "프로세스 소유 정보를 확인할 수 없어 중지하지 못했습니다." : {},
-    "프로세스 정리가 끝나지 않았습니다. 중지를 다시 시도하세요." : {},
-    "프로세스 종료 또는 PTY의 마지막 출력을 기다리고 있습니다." : {}
+    "↑ ↓ 선택 · Return 실행 · Esc 닫기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "↑ ↓ select · Return run · Esc close"
+          }
+        }
+      }
+    },
+    "같은 작업이 이미 실행 중입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This task is already running."
+          }
+        }
+      }
+    },
+    "개요": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overview"
+          }
+        }
+      }
+    },
+    "검색 결과 없음": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No results"
+          }
+        }
+      }
+    },
+    "검색 조건과 저장소 경로 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the search and repository path"
+          }
+        }
+      }
+    },
+    "경로 누락": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Missing path"
+          }
+        }
+      }
+    },
+    "경로 복사": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copy path"
+          }
+        }
+      }
+    },
+    "경로가 없습니다. 저장소 경로를 다시 연결": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Path is missing. Reconnect the repository"
+          }
+        }
+      }
+    },
+    "공통으로 저장하면 현재 워크트리의 같은 작업 재정의를 해제합니다. 다른 워크트리의 재정의는 유지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving as shared clears this worktree's override for the same task. Other worktrees keep their overrides."
+          }
+        }
+      }
+    },
+    "그룹": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Group"
+          }
+        }
+      }
+    },
+    "그룹 설정 삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete group"
+          }
+        }
+      }
+    },
+    "그룹 설정 저장 실패: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to save group: %@"
+          }
+        }
+      }
+    },
+    "그룹 설정을 삭제할까요?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete this group?"
+          }
+        }
+      }
+    },
+    "그룹 실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run group"
+          }
+        }
+      }
+    },
+    "그룹 실행 · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run group · %@"
+          }
+        }
+      }
+    },
+    "그룹 이름": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Group name"
+          }
+        }
+      }
+    },
+    "그룹 이름과 단계별 작업 확인. 작업은 중복 없이 최대 32개, 단계는 최대 16개": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the group name and tasks. At most 32 tasks, no duplicates, and at most 16 stages"
+          }
+        }
+      }
+    },
+    "그룹 작업": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Group task"
+          }
+        }
+      }
+    },
+    "그룹 작업 실패: %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Group task failed: %@ · %@"
+          }
+        }
+      }
+    },
+    "그룹 중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop group"
+          }
+        }
+      }
+    },
+    "그룹 중지 · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop group · %@"
+          }
+        }
+      }
+    },
+    "그룹 추가": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add group"
+          }
+        }
+      }
+    },
+    "그룹 편집": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit group"
+          }
+        }
+      }
+    },
+    "그룹의 작업 구성이 변경되었습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The group's task list changed."
+          }
+        }
+      }
+    },
+    "그룹의 작업을 찾을 수 없습니다: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Group task not found: %@"
+          }
+        }
+      }
+    },
+    "기록은 현재 앱 세션 기준입니다. 종료한 작업 탭은 최근 20개를 유지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History is for this app session. Closed task tabs keep the latest 20."
+          }
+        }
+      }
+    },
+    "기본 셸": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Default shell"
+          }
+        }
+      }
+    },
+    "기존 Git 저장소 폴더를 선택하거나 사이드바에 끌어 놓기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a Git repository folder or drop it on the sidebar"
+          }
+        }
+      }
+    },
+    "기존 로컬 브랜치": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Existing local branch"
+          }
+        }
+      }
+    },
+    "기준 브랜치": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start point"
+          }
+        }
+      }
+    },
+    "기준 브랜치가 없습니다. 첫 커밋이 있는 저장소인지 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No start branch. Check that the repository has a first commit"
+          }
+        }
+      }
+    },
+    "다른 워크트리가 이 브랜치를 사용하고 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another worktree is using this branch."
+          }
+        }
+      }
+    },
+    "다른 저장소의 그룹입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Group belongs to another repository."
+          }
+        }
+      }
+    },
+    "다시 연결": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reconnect"
+          }
+        }
+      }
+    },
+    "다시 읽기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reload"
+          }
+        }
+      }
+    },
+    "다음 단계 추가": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add stage"
+          }
+        }
+      }
+    },
+    "다크": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        }
+      }
+    },
+    "단계 %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stage %lld"
+          }
+        }
+      }
+    },
+    "단계 %lld / %lld · 시작한 작업 %lld개": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stage %lld / %lld · %lld tasks started"
+          }
+        }
+      }
+    },
+    "단계 삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete stage"
+          }
+        }
+      }
+    },
+    "단계 아래로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move stage down"
+          }
+        }
+      }
+    },
+    "단계 위로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move stage up"
+          }
+        }
+      }
+    },
+    "단계 이름 (선택)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stage name (optional)"
+          }
+        }
+      }
+    },
+    "단계는 순서대로, 같은 단계의 작업은 병렬 실행. 서버는 마지막 단계": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stages run in order. Tasks in a stage run in parallel. Servers go in the last stage"
+          }
+        }
+      }
+    },
+    "닫기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "대상 폴더가 비어 있지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The destination folder is not empty."
+          }
+        }
+      }
+    },
+    "도구": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tools"
+          }
+        }
+      }
+    },
+    "도구 설정 저장": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save tool settings"
+          }
+        }
+      }
+    },
+    "등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add"
+          }
+        }
+      }
+    },
+    "등록 해제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unregister"
+          }
+        }
+      }
+    },
+    "디렉터리: %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Directory: %@ · %@"
+          }
+        }
+      }
+    },
+    "라이선스": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "License"
+          }
+        }
+      }
+    },
+    "라이트": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        }
+      }
+    },
+    "로그 상한을 넘어 오래된 출력이 잘렸습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Older output was trimmed at the log limit."
+          }
+        }
+      }
+    },
+    "로그인 셸 명령 모드 실행 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Login shell command mode verified"
+          }
+        }
+      }
+    },
+    "로컬 브랜치": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local branch"
+          }
+        }
+      }
+    },
+    "리스닝 주소를 해석할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot parse the listening address."
+          }
+        }
+      }
+    },
+    "마지막 로컬 fetch 결과 기준입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Based on the last local fetch."
+          }
+        }
+      }
+    },
+    "메인 워크트리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main worktree"
+          }
+        }
+      }
+    },
+    "메인·bare·잠김·누락 워크트리는 삭제할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Main, bare, locked, or missing worktrees cannot be deleted."
+          }
+        }
+      }
+    },
+    "명령 시작 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to start command"
+          }
+        }
+      }
+    },
+    "명령 실행 시간이 초과되었습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The command timed out."
+          }
+        }
+      }
+    },
+    "명령 출력 읽기 실패 (%d)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read command output (%d)"
+          }
+        }
+      }
+    },
+    "명령 출력 한도를 초과했습니다. 결과를 표시할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Command output exceeded the limit. The result cannot be shown."
+          }
+        }
+      }
+    },
+    "명령 팔레트": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Command Palette"
+          }
+        }
+      }
+    },
+    "명령의 실행 경로 또는 인자가 올바르지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The command path or arguments are invalid."
+          }
+        }
+      }
+    },
+    "모든 실행을 중지할까요?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop all runs?"
+          }
+        }
+      }
+    },
+    "모든 저장소의 작업·터미널": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasks and terminals in every repository"
+          }
+        }
+      }
+    },
+    "모양": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appearance"
+          }
+        }
+      }
+    },
+    "미리 보기 한도 초과. 에디터에서 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview limit exceeded. Open in the editor"
+          }
+        }
+      }
+    },
+    "미설정": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not set"
+          }
+        }
+      }
+    },
+    "미추적 / 충돌": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untracked / conflicts"
+          }
+        }
+      }
+    },
+    "미추적 디렉터리는 항목 단위로 요약됩니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untracked directories are counted as one item."
+          }
+        }
+      }
+    },
+    "미추적 파일 확장": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expand untracked files"
+          }
+        }
+      }
+    },
+    "미추적 파일 확장 후 개별 파일 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expand untracked files, then select a file"
+          }
+        }
+      }
+    },
+    "미추적 파일에는 staged 변경이 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untracked files have no staged changes."
+          }
+        }
+      }
+    },
+    "미추적 파일의 읽기 전용 내용입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read-only contents of an untracked file."
+          }
+        }
+      }
+    },
+    "바이너리 또는 UTF-8이 아닌 파일입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Binary or non-UTF-8 file."
+          }
+        }
+      }
+    },
+    "발견한 경로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Found path"
+          }
+        }
+      }
+    },
+    "버전·실행 진단": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version and run check"
+          }
+        }
+      }
+    },
+    "변경": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes"
+          }
+        }
+      }
+    },
+    "변경 %lld항목": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld changes"
+          }
+        }
+      }
+    },
+    "변경 또는 미추적 항목이 있는 워크트리는 삭제할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A worktree with changes or untracked files cannot be deleted."
+          }
+        }
+      }
+    },
+    "변경 사항 없음": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No changes"
+          }
+        }
+      }
+    },
+    "변경 있는 워크트리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worktrees with changes"
+          }
+        }
+      }
+    },
+    "변경 있음": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changes"
+          }
+        }
+      }
+    },
+    "브랜치": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Branch"
+          }
+        }
+      }
+    },
+    "브랜치 이름과 폴더 이름은 별개입니다. 경로를 직접 수정할 수 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The branch name and folder name are separate. You can edit the path."
+          }
+        }
+      }
+    },
+    "브랜치 이름은 직접 입력. 이전 브랜치 표현식은 사용할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter the branch name directly. Previous-branch expressions are not allowed."
+          }
+        }
+      }
+    },
+    "빈 문자열도 인자로 전달됩니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty strings are passed as arguments"
+          }
+        }
+      }
+    },
+    "사용자 설정": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Custom"
+          }
+        }
+      }
+    },
+    "사용자 설정 초기화": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset custom settings"
+          }
+        }
+      }
+    },
+    "사용자 중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped"
+          }
+        }
+      }
+    },
+    "사용자 중지 · 신호 %d": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped · signal %d"
+          }
+        }
+      }
+    },
+    "사용자 중지 · 종료 코드 %d": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopped · exit %d"
+          }
+        }
+      }
+    },
+    "삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        }
+      }
+    },
+    "삭제 가능 여부 확인 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking whether it can be deleted"
+          }
+        }
+      }
+    },
+    "상대 작업 디렉터리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working directory"
+          }
+        }
+      }
+    },
+    "상태를 확인할 수 없습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status unavailable"
+          }
+        }
+      }
+    },
+    "새 그룹": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New group"
+          }
+        }
+      }
+    },
+    "새 브랜치": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New branch"
+          }
+        }
+      }
+    },
+    "새 브랜치 이름": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Branch name"
+          }
+        }
+      }
+    },
+    "새 작업": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New task"
+          }
+        }
+      }
+    },
+    "새 터미널": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New terminal"
+          }
+        }
+      }
+    },
+    "새로고침": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh"
+          }
+        }
+      }
+    },
+    "생성": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create"
+          }
+        }
+      }
+    },
+    "생성할 절대 경로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Absolute path"
+          }
+        }
+      }
+    },
+    "서버": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server"
+          }
+        }
+      }
+    },
+    "서버 URL (선택)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server URL (optional)"
+          }
+        }
+      }
+    },
+    "서버 URL은 http 또는 https 주소여야 합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server URL must be http or https."
+          }
+        }
+      }
+    },
+    "서버 작업은 마지막 단계. 앞 단계의 일회성 작업이 성공한 뒤 다음 단계 시작": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server tasks belong in the last stage. The next stage starts after one-shot tasks succeed"
+          }
+        }
+      }
+    },
+    "서버 종료 · 코드 0": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Server exited · code 0"
+          }
+        }
+      }
+    },
+    "선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select"
+          }
+        }
+      }
+    },
+    "선택한 로컬 브랜치가 더 이상 존재하지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected local branch no longer exists."
+          }
+        }
+      }
+    },
+    "선택한 영역에 변경 내용이 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No changes in the selected area."
+          }
+        }
+      }
+    },
+    "선택한 워크트리의 전체 작업 설정을 재정의합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overrides the full task settings for the selected worktree."
+          }
+        }
+      }
+    },
+    "설정 URL 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open configured URL"
+          }
+        }
+      }
+    },
+    "설정 다시 읽기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reload settings"
+          }
+        }
+      }
+    },
+    "설정 복구 후 저장소 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recover settings, then add a repository"
+          }
+        }
+      }
+    },
+    "설정 파일이 너무 큽니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The settings file is too large."
+          }
+        }
+      }
+    },
+    "설정에 중복된 저장소가 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings contain a duplicate repository."
+          }
+        }
+      }
+    },
+    "설정은 Application Support/CannyGit에 저장합니다. 비밀 환경 변수 값과 실행 중인 PID는 저장하지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings are stored in Application Support/CannyGit. Secret environment values and running PIDs are not stored."
+          }
+        }
+      }
+    },
+    "설정을 다시 읽기 전에 실행 중인 세션 정리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop running sessions before reloading settings"
+          }
+        }
+      }
+    },
+    "설정을 먼저 복구하거나 다시 읽어야 합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recover or reload settings first."
+          }
+        }
+      }
+    },
+    "설정을 읽지 못했습니다: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read settings: %@"
+          }
+        }
+      }
+    },
+    "설정을 저장하지 못했습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to save settings"
+          }
+        }
+      }
+    },
+    "설치 경로 찾기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find install path"
+          }
+        }
+      }
+    },
+    "성공": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Succeeded"
+          }
+        }
+      }
+    },
+    "세션": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session"
+          }
+        }
+      }
+    },
+    "세션 %lld개와 실행 그룹 %lld개를 정리합니다. 소유한 자식 작업도 함께 중지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stops %lld sessions and %lld run groups, including owned child processes."
+          }
+        }
+      }
+    },
+    "세션 정리가 완료되지 않았습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Session cleanup did not finish."
+          }
+        }
+      }
+    },
+    "세션 중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop session"
+          }
+        }
+      }
+    },
+    "세션을 중지하고 탭을 닫을까요?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop the session and close the tab?"
+          }
+        }
+      }
+    },
+    "셸": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shell"
+          }
+        }
+      }
+    },
+    "셸 명령": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shell command"
+          }
+        }
+      }
+    },
+    "셸 실행 경로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shell path"
+          }
+        }
+      }
+    },
+    "소유 프로세스 %d의 상태를 읽을 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read the status of owned process %d."
+          }
+        }
+      }
+    },
+    "수집: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collected: %@"
+          }
+        }
+      }
+    },
+    "숨긴 작업 복원": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore hidden tasks"
+          }
+        }
+      }
+    },
+    "시스템": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        }
+      }
+    },
+    "시작": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start"
+          }
+        }
+      }
+    },
+    "시작 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to start"
+          }
+        }
+      }
+    },
+    "시작 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starting"
+          }
+        }
+      }
+    },
+    "시작 취소": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel start"
+          }
+        }
+      }
+    },
+    "시작: %@\n셸: %@\n디렉터리: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Started: %@\nShell: %@\nDirectory: %@"
+          }
+        }
+      }
+    },
+    "시작한 프로세스의 소유 정보를 확인할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot confirm ownership of the started process."
+          }
+        }
+      }
+    },
+    "신호 %d로 종료": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exited with signal %d"
+          }
+        }
+      }
+    },
+    "실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed"
+          }
+        }
+      }
+    },
+    "실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run"
+          }
+        }
+      }
+    },
+    "실행 %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running %lld"
+          }
+        }
+      }
+    },
+    "실행 가능한 앱 번들을 찾지 못했습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No executable app bundle found."
+          }
+        }
+      }
+    },
+    "실행 경로와 작업 디렉터리 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the executable path and working directory"
+          }
+        }
+      }
+    },
+    "실행 그룹": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run group"
+          }
+        }
+      }
+    },
+    "실행 그룹 편집": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit run group"
+          }
+        }
+      }
+    },
+    "실행 단계가 설정과 다릅니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The running stage does not match the saved group."
+          }
+        }
+      }
+    },
+    "실행 명령 · 비워 두면 대화형 셸": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Command · empty starts an interactive shell"
+          }
+        }
+      }
+    },
+    "실행 방식": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run as"
+          }
+        }
+      }
+    },
+    "실행 방식을 바꾸면 명령을 직접 확인. 셸 명령은 선택한 셸의 -lc 모드로 실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the command after changing the run mode. Shell commands use the selected shell's -lc mode"
+          }
+        }
+      }
+    },
+    "실행 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed"
+          }
+        }
+      }
+    },
+    "실행 실패 (%d): %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run failed (%d): %@"
+          }
+        }
+      }
+    },
+    "실행 인자 할당 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to allocate arguments"
+          }
+        }
+      }
+    },
+    "실행 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running"
+          }
+        }
+      }
+    },
+    "실행 중 · LISTEN 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running · LISTEN confirmed"
+          }
+        }
+      }
+    },
+    "실행 중인 그룹을 먼저 중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop the running group first"
+          }
+        }
+      }
+    },
+    "실행 중인 터미널을 정리하고 종료할까요?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop running terminals and quit?"
+          }
+        }
+      }
+    },
+    "실행 파일": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Executable"
+          }
+        }
+      }
+    },
+    "실행 파일 + 인자": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Executable + arguments"
+          }
+        }
+      }
+    },
+    "실행 파일 시작 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to start executable"
+          }
+        }
+      }
+    },
+    "실행 파일 지정": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set the executable"
+          }
+        }
+      }
+    },
+    "실행 파일 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Executable verified"
+          }
+        }
+      }
+    },
+    "실행 현황": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activity"
+          }
+        }
+      }
+    },
+    "실행 현황 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show activity"
+          }
+        }
+      }
+    },
+    "실행과 로그": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runs and logs"
+          }
+        }
+      }
+    },
+    "실행기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runner"
+          }
+        }
+      }
+    },
+    "실행기 선택 후 재탐지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a runner, then detect again"
+          }
+        }
+      }
+    },
+    "실행할 명령 입력": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a command"
+          }
+        }
+      }
+    },
+    "심볼릭 링크 대상 경로입니다. 대상 파일 내용은 읽지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is a symlink path. The target file is not read."
+          }
+        }
+      }
+    },
+    "심볼릭 링크 읽기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read symlink"
+          }
+        }
+      }
+    },
+    "앞 단계가 성공해야 다음 단계를 시작합니다. 한 단계에 선택한 작업은 동시에 실행합니다. 실패·취소 시 그룹이 시작한 세션만 정리합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The next stage starts only after the previous stage succeeds. Tasks in a stage run together. Failure or cancel stops only sessions this group started."
+          }
+        }
+      }
+    },
+    "앱 번들과 실행 파일 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App bundle and executable verified"
+          }
+        }
+      }
+    },
+    "언어": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        }
+      }
+    },
+    "에디터 앱": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editor app"
+          }
+        }
+      }
+    },
+    "에디터 앱 경로": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editor app path"
+          }
+        }
+      }
+    },
+    "에디터 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open editor"
+          }
+        }
+      }
+    },
+    "에디터에서 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open in editor"
+          }
+        }
+      }
+    },
+    "역할": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Role"
+          }
+        }
+      }
+    },
+    "열린 세션을 정리하고 앱의 등록 정보와 작업 설정을 제거합니다. 저장소 파일은 유지됩니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stops open sessions and removes this app's registration and task settings. Repository files stay."
+          }
+        }
+      }
+    },
+    "열린 세션이 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No open sessions."
+          }
+        }
+      }
+    },
+    "열린 터미널 없음": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No open terminal"
+          }
+        }
+      }
+    },
+    "예: /usr/bin/git, /bin/zsh, /Applications/Visual Studio Code.app": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Example: /usr/bin/git, /bin/zsh, /Applications/Visual Studio Code.app"
+          }
+        }
+      }
+    },
+    "예: 설치 → 프런트엔드 + 백엔드": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Example: install → frontend + backend"
+          }
+        }
+      }
+    },
+    "예상 포트 (쉼표 구분)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected ports (comma-separated)"
+          }
+        }
+      }
+    },
+    "예상 포트 점유: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected port in use: %@"
+          }
+        }
+      }
+    },
+    "예상 포트 조회 실패: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected-port check failed: %@"
+          }
+        }
+      }
+    },
+    "예상 포트는 1~65535, 쉼표로 구분": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected ports are 1–65535, comma-separated"
+          }
+        }
+      }
+    },
+    "예상: %@ · LISTEN은 HTTP 정상 응답을 보장하지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected: %@ · LISTEN does not mean HTTP is healthy."
+          }
+        }
+      }
+    },
+    "완료 · 종료 0": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done · exit 0"
+          }
+        }
+      }
+    },
+    "워크트리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worktree"
+          }
+        }
+      }
+    },
+    "워크트리 경로가 기존 경로 또는 Git 메타데이터와 충돌합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The worktree path conflicts with an existing path or Git metadata."
+          }
+        }
+      }
+    },
+    "워크트리 경로는 절대 경로여야 합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The worktree path must be absolute."
+          }
+        }
+      }
+    },
+    "워크트리 기준 파일 경로가 올바르지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The path is not relative to the worktree."
+          }
+        }
+      }
+    },
+    "워크트리 삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete worktree"
+          }
+        }
+      }
+    },
+    "워크트리 생성": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New worktree"
+          }
+        }
+      }
+    },
+    "워크트리 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select worktree"
+          }
+        }
+      }
+    },
+    "워크트리 선택 후 + 또는 작업 실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a worktree, then + or run a task"
+          }
+        }
+      }
+    },
+    "워크트리 안의 폴더 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a folder inside the worktree"
+          }
+        }
+      }
+    },
+    "워크트리 연결이 바뀌었습니다. 목록 갱신 후 다시 시도": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The worktree link changed. Refresh the list and try again"
+          }
+        }
+      }
+    },
+    "워크트리 열기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to open worktree"
+          }
+        }
+      }
+    },
+    "워크트리 전용": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worktree only"
+          }
+        }
+      }
+    },
+    "워크트리 폴더 삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete worktree folder"
+          }
+        }
+      }
+    },
+    "워크트리 필터": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worktree filter"
+          }
+        }
+      }
+    },
+    "워크트리는 만들었지만 브랜치 연결이 예상과 다릅니다. 목록을 다시 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The worktree was created, but the branch link is not what was expected. Check the list"
+          }
+        }
+      }
+    },
+    "워크트리로 이동": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to worktree"
+          }
+        }
+      }
+    },
+    "워크트리를 찾을 수 없습니다. 저장소 새로고침": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Worktree not found. Refresh the repository"
+          }
+        }
+      }
+    },
+    "유효한 기준 브랜치 필요. 첫 커밋 전에는 워크트리를 만들 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A valid start branch is required. Worktrees cannot be created before the first commit."
+          }
+        }
+      }
+    },
+    "의존성 설치": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Install dependencies"
+          }
+        }
+      }
+    },
+    "이 세션에서 실행한 셸과 자식 작업을 함께 중지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stops the shell and child processes started in this session."
+          }
+        }
+      }
+    },
+    "이 세션의 셸과 자식 작업을 함께 중지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stops this session's shell and child processes."
+          }
+        }
+      }
+    },
+    "이 셸의 인자 실행은 지원하지 않습니다. zsh/bash/fish 선택 또는 셸 명령으로 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Argument execution is not supported for this shell. Choose zsh, bash, or fish, or register a shell command"
+          }
+        }
+      }
+    },
+    "이 앱이 시작한 작업과 터미널을 함께 중지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stops tasks and terminals started by this app."
+          }
+        }
+      }
+    },
+    "이 워크트리 재정의 해제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear this worktree override"
+          }
+        }
+      }
+    },
+    "이 워크트리에서 같은 그룹이 이미 실행 중입니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This group is already running in this worktree."
+          }
+        }
+      }
+    },
+    "이 워크트리에서 숨기기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide in this worktree"
+          }
+        }
+      }
+    },
+    "이 저장소의 워크트리에서 공통으로 사용합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared by worktrees in this repository."
+          }
+        }
+      }
+    },
+    "이 폴더 전체가 제거됩니다. 브랜치는 유지됩니다. 열린 작업과 터미널은 먼저 정리합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This entire folder is removed. The branch is kept. Open tasks and terminals are stopped first."
+          }
+        }
+      }
+    },
+    "이름": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        }
+      }
+    },
+    "이름 변경": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rename"
+          }
+        }
+      }
+    },
+    "이름·브랜치·경로 검색": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search name, branch, or path"
+          }
+        }
+      }
+    },
+    "이미 실행 중인 작업이 그룹에 포함되어 있습니다: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A task already running is in the group: %@"
+          }
+        }
+      }
+    },
+    "이전 설정 복구": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restore previous settings"
+          }
+        }
+      }
+    },
+    "인자 (JSON 문자열 배열)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arguments (JSON string array)"
+          }
+        }
+      }
+    },
+    "인자 · 한 행이 한 인자입니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arguments · one row is one argument"
+          }
+        }
+      }
+    },
+    "인자 삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete argument"
+          }
+        }
+      }
+    },
+    "인자 아래로 이동": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move argument down"
+          }
+        }
+      }
+    },
+    "인자 위로 이동": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Move argument up"
+          }
+        }
+      }
+    },
+    "인자 추가": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add argument"
+          }
+        }
+      }
+    },
+    "일반 파일만 미리 볼 수 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only regular files can be previewed."
+          }
+        }
+      }
+    },
+    "일회성 작업": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One-shot task"
+          }
+        }
+      }
+    },
+    "읽기 전용": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Read-only"
+          }
+        }
+      }
+    },
+    "입력 대기열이 가득 찼습니다. 붙여넣기를 줄여 다시 시도": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The input queue is full. Paste less and try again"
+          }
+        }
+      }
+    },
+    "자동": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic"
+          }
+        }
+      }
+    },
+    "자동 탐지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detected"
+          }
+        }
+      }
+    },
+    "자식 프로세스 / 출력 종료 대기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for child processes or output to finish"
+          }
+        }
+      }
+    },
+    "자식 프로세스 정리 대기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for child processes"
+          }
+        }
+      }
+    },
+    "작업": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tasks"
+          }
+        }
+      }
+    },
+    "작업 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add task"
+          }
+        }
+      }
+    },
+    "작업 디렉터리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Working directory"
+          }
+        }
+      }
+    },
+    "작업 디렉터리 열기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to open working directory"
+          }
+        }
+      }
+    },
+    "작업 디렉터리가 없거나 워크트리 바깥을 가리킵니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The working directory is missing or outside the worktree."
+          }
+        }
+      }
+    },
+    "작업 디렉터리는 워크트리 기준 상대 경로여야 합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The working directory must be relative to the worktree."
+          }
+        }
+      }
+    },
+    "작업 로그: 실행별 5 MiB / 전체 50 MiB. 완료된 작업 탭은 최근 20개를 유지합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Task logs: 5 MiB per run / 50 MiB total. Finished task tabs keep the latest 20."
+          }
+        }
+      }
+    },
+    "작업 실행 · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Run task · %@"
+          }
+        }
+      }
+    },
+    "작업 이름 입력": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a task name"
+          }
+        }
+      }
+    },
+    "작업 이름과 예상 포트(1~65535) 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check the task name and expected ports (1–65535)"
+          }
+        }
+      }
+    },
+    "작업 직접 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add task"
+          }
+        }
+      }
+    },
+    "작업 탭에서 먼저 작업 탐지 또는 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detect or add a task on the Tasks tab first"
+          }
+        }
+      }
+    },
+    "작업 편집": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit task"
+          }
+        }
+      }
+    },
+    "작업을 완료하지 못했습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The task did not finish"
+          }
+        }
+      }
+    },
+    "잠김: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locked: %@"
+          }
+        }
+      }
+    },
+    "재실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rerun"
+          }
+        }
+      }
+    },
+    "재연결 전에 이 저장소의 실행 세션 중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop this repository's sessions before reconnecting"
+          }
+        }
+      }
+    },
+    "재탐지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detect again"
+          }
+        }
+      }
+    },
+    "저장": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "저장 다시 시도": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retry save"
+          }
+        }
+      }
+    },
+    "저장 범위": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save scope"
+          }
+        }
+      }
+    },
+    "저장되지 않은 변경: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsaved changes: %@"
+          }
+        }
+      }
+    },
+    "저장소": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repository"
+          }
+        }
+      }
+    },
+    "저장소 공통": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared"
+          }
+        }
+      }
+    },
+    "저장소 공통 설정 초기화": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset shared settings"
+          }
+        }
+      }
+    },
+    "저장소 공통 설정으로 저장": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save as shared settings"
+          }
+        }
+      }
+    },
+    "저장소 공통 실행 그룹": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shared run groups"
+          }
+        }
+      }
+    },
+    "저장소 등록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Repository"
+          }
+        }
+      }
+    },
+    "저장소 등록을 해제할까요?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unregister this repository?"
+          }
+        }
+      }
+    },
+    "저장소 변경 작업이 진행 중입니다. 완료 후 다시 시도": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A repository change is in progress. Try again when it finishes"
+          }
+        }
+      }
+    },
+    "저장소 이름": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repository name"
+          }
+        }
+      }
+    },
+    "저장소·워크트리·작업 검색": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search repositories, worktrees, tasks"
+          }
+        }
+      }
+    },
+    "저장소의 브랜치와 개발 작업을 한곳에서 관리합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Manage branches and development tasks for your repositories."
+          }
+        }
+      }
+    },
+    "저장했습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved"
+          }
+        }
+      }
+    },
+    "전체": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All"
+          }
+        }
+      }
+    },
+    "전체 기록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All history"
+          }
+        }
+      }
+    },
+    "전체 새로고침": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh all"
+          }
+        }
+      }
+    },
+    "전체 실행 현황": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All activity"
+          }
+        }
+      }
+    },
+    "전체 저장소": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All repositories"
+          }
+        }
+      }
+    },
+    "전체 중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop all"
+          }
+        }
+      }
+    },
+    "절대 경로 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select an absolute path"
+          }
+        }
+      }
+    },
+    "접근 불가 · 재연결 필요": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unavailable · reconnect"
+          }
+        }
+      }
+    },
+    "접근·조회 오류": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Access or refresh error"
+          }
+        }
+      }
+    },
+    "정리 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleaning up"
+          }
+        }
+      }
+    },
+    "정리할 실행 세션: %lld개": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessions to stop: %lld"
+          }
+        }
+      }
+    },
+    "조회 실패 · 이전 상태": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh failed · previous status"
+          }
+        }
+      }
+    },
+    "조회 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refreshing"
+          }
+        }
+      }
+    },
+    "종료": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exited"
+          }
+        }
+      }
+    },
+    "종료 상태 조회 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read exit status"
+          }
+        }
+      }
+    },
+    "종료 상태 확인 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to confirm exit status"
+          }
+        }
+      }
+    },
+    "종료 코드 %d": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exit code %d"
+          }
+        }
+      }
+    },
+    "종류": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kind"
+          }
+        }
+      }
+    },
+    "준비 %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing %lld"
+          }
+        }
+      }
+    },
+    "준비 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing"
+          }
+        }
+      }
+    },
+    "중지": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop"
+          }
+        }
+      }
+    },
+    "중지 중": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopping"
+          }
+        }
+      }
+    },
+    "중지하고 닫기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop and close"
+          }
+        }
+      }
+    },
+    "중지하고 종료": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop and quit"
+          }
+        }
+      }
+    },
+    "즐겨찾기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Favorites"
+          }
+        }
+      }
+    },
+    "즐겨찾기 추가": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add favorite"
+          }
+        }
+      }
+    },
+    "즐겨찾기 해제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove favorite"
+          }
+        }
+      }
+    },
+    "지원하지 않는 설정 버전. 파일은 보존했습니다. 앱 버전 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unsupported settings version. The file was kept. Check the app version"
+          }
+        }
+      }
+    },
+    "진단은 Git 버전과 셸의 -lc 명령 모드를 실행합니다. 셸 초기화 파일에 따라 Finder 실행 환경의 PATH가 달라질 수 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The check runs the Git version and the shell -lc command mode. Finder's PATH can differ based on shell startup files."
+          }
+        }
+      }
+    },
+    "참조 제거": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove reference"
+          }
+        }
+      }
+    },
+    "창을 닫아도 세션은 유지됩니다. 앱 종료 시에는 실행 중인 세션을 함께 정리합니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Closing the window keeps sessions. Quitting the app stops running sessions."
+          }
+        }
+      }
+    },
+    "찾아보기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Browse"
+          }
+        }
+      }
+    },
+    "첫 커밋 전": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No commits yet"
+          }
+        }
+      }
+    },
+    "최근 실행 · %@ · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last run · %@ · %@"
+          }
+        }
+      }
+    },
+    "최근 작업 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent task failed"
+          }
+        }
+      }
+    },
+    "출력 URL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Output URL"
+          }
+        }
+      }
+    },
+    "출력 로그 내보내기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Export log"
+          }
+        }
+      }
+    },
+    "출력 보기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show output"
+          }
+        }
+      }
+    },
+    "출력 보기 · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show output · %@"
+          }
+        }
+      }
+    },
+    "충돌 %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld conflicts"
+          }
+        }
+      }
+    },
+    "취소": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "탐지 상대 디렉터리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detection directory"
+          }
+        }
+      }
+    },
+    "탐지 실패 · 이전 결과: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detection failed · previous result: %@"
+          }
+        }
+      }
+    },
+    "탐지 원본이 변경되었습니다. 저장한 명령은 유지됩니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The detected source changed. The saved command is kept."
+          }
+        }
+      }
+    },
+    "탐지 원본이 없거나 탐지 디렉터리가 변경되었습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The detected source is missing or the detection directory changed."
+          }
+        }
+      }
+    },
+    "탐지만으로 명령을 실행하지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detection does not run commands."
+          }
+        }
+      }
+    },
+    "터미널": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal"
+          }
+        }
+      }
+    },
+    "터미널 검증 준비": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing terminal probe"
+          }
+        }
+      }
+    },
+    "터미널 글자 크기: %lld": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal font size: %lld"
+          }
+        }
+      }
+    },
+    "터미널 기술 검증": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal probe"
+          }
+        }
+      }
+    },
+    "터미널 숨기기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide terminal"
+          }
+        }
+      }
+    },
+    "터미널 열기": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open terminal"
+          }
+        }
+      }
+    },
+    "터미널 열기 · %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open terminal · %@"
+          }
+        }
+      }
+    },
+    "터미널 입력 대기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to wait for terminal input"
+          }
+        }
+      }
+    },
+    "터미널 입력 전달 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to send terminal input"
+          }
+        }
+      }
+    },
+    "터미널 최대화 / 복원": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maximize / restore terminal"
+          }
+        }
+      }
+    },
+    "터미널 출력 읽기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read terminal output"
+          }
+        }
+      }
+    },
+    "터미널 크기 변경 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to resize terminal"
+          }
+        }
+      }
+    },
+    "터미널 탭 목록": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terminal tabs"
+          }
+        }
+      }
+    },
+    "터미널 표시 전환": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toggle terminal"
+          }
+        }
+      }
+    },
+    "테마": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Theme"
+          }
+        }
+      }
+    },
+    "파일 경로 열기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to open file path"
+          }
+        }
+      }
+    },
+    "파일 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select file"
+          }
+        }
+      }
+    },
+    "파일 읽기 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read file"
+          }
+        }
+      }
+    },
+    "파일 정보 조회 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to read file info"
+          }
+        }
+      }
+    },
+    "파일 형식이 바뀌었습니다. 다시 조회": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File format changed. Refresh"
+          }
+        }
+      }
+    },
+    "파일까지 확장": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expand to files"
+          }
+        }
+      }
+    },
+    "파일이 없거나 실행 권한이 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "File is missing or not executable."
+          }
+        }
+      }
+    },
+    "패키지 매니저 단서가 충돌합니다. 실행기 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Package manager clues conflict. Select a runner"
+          }
+        }
+      }
+    },
+    "패키지 매니저 선택 후 그룹 실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select a package manager, then run the group"
+          }
+        }
+      }
+    },
+    "포트 범위가 올바르지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The port range is invalid."
+          }
+        }
+      }
+    },
+    "포트 조회 결과의 PID가 올바르지 않습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The port check returned an invalid PID."
+          }
+        }
+      }
+    },
+    "포트 조회 실패: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Port check failed: %@"
+          }
+        }
+      }
+    },
+    "폴더 삭제": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete folder"
+          }
+        }
+      }
+    },
+    "폴더 선택": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Folder"
+          }
+        }
+      }
+    },
+    "폴더 선택 후 시작. 한글 입력, vim, 크기 변경, 작업 종료 확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a folder, then start. Check Korean input, vim, resize, and task exit"
+          }
+        }
+      }
+    },
+    "표시 이름": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Display name"
+          }
+        }
+      }
+    },
+    "표시할 diff가 없습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No diff"
+          }
+        }
+      }
+    },
+    "표시할 실행": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runs"
+          }
+        }
+      }
+    },
+    "표시할 실행이 없습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No runs"
+          }
+        }
+      }
+    },
+    "표시할 워크트리가 없습니다": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No worktrees"
+          }
+        }
+      }
+    },
+    "프로세스 %d 중지 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to stop process %d"
+          }
+        }
+      }
+    },
+    "프로세스 목록 조회 실패": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Failed to list processes"
+          }
+        }
+      }
+    },
+    "프로세스 목록이 계속 변경되어 정리를 확인할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The process list kept changing, so cleanup could not be confirmed."
+          }
+        }
+      }
+    },
+    "프로세스 소유 정보를 확인할 수 없어 중지하지 못했습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not confirm process ownership, so it was not stopped."
+          }
+        }
+      }
+    },
+    "프로세스 정리가 끝나지 않았습니다. 중지를 다시 시도": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Process cleanup did not finish. Try stopping again"
+          }
+        }
+      }
+    },
+    "프로세스 종료 또는 PTY의 마지막 출력을 기다리고 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waiting for the process to exit or for the last PTY output."
+          }
+        }
+      }
+    },
+    "프로젝트 파일에서 명령을 탐지하거나 + 버튼으로 직접 등록할 수 있습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detect commands from project files, or add one with +."
+          }
+        }
+      }
+    },
+    "필터를 바꾸거나 워크트리에서 작업 시작": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change the filter or start a task in a worktree"
+          }
+        }
+      }
+    },
+    "현재 워크트리": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This worktree"
+          }
+        }
+      }
+    },
+    "현재 워크트리에서 diff를 읽을 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot read the diff in this worktree."
+          }
+        }
+      }
+    },
+    "현재 워크트리에서 그룹을 실행할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot run a group in this worktree."
+          }
+        }
+      }
+    },
+    "현재 워크트리에서 작업을 시작할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot start a task in this worktree."
+          }
+        }
+      }
+    },
+    "현재 워크트리에서 터미널을 시작할 수 없습니다.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cannot start a terminal in this worktree."
+          }
+        }
+      }
+    },
+    "확인": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "확인 시각: %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checked: %@"
+          }
+        }
+      }
+    },
+    "환경 변수 이름만 저장. 비밀 값은 넣지 않음": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only environment variable names are stored. Do not enter secrets"
+          }
+        }
+      }
+    },
+    "환경 변수 참조 (KEY=기존_환경변수명)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Environment reference (KEY=SOURCE_NAME)"
+          }
+        }
+      }
+    },
+    "환경 변수 참조는 중복 없이 KEY=SOURCE_NAME": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Environment references must be unique KEY=SOURCE_NAME"
+          }
+        }
+      }
+    },
+    "환경 변수 참조를 찾을 수 없습니다: %@ ← %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Environment reference not found: %@ ← %@"
+          }
+        }
+      }
+    },
+    "환경 변수·포트·서버 URL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Environment, ports, server URL"
+          }
+        }
+      }
+    }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

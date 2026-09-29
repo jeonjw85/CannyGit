@@ -112,7 +112,7 @@ struct TerminalPanel: View {
                 }.font(.caption).padding(.horizontal, 12).padding(.vertical, 5)
             } else {
                 ContentUnavailableView("열린 터미널 없음", systemImage: "terminal",
-                    description: Text("워크트리를 선택하고 + 버튼을 누르거나 작업을 실행하세요."))
+                    description: Text("워크트리 선택 후 + 또는 작업 실행"))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }

@@ -45,7 +45,7 @@ struct DashboardView: View {
                             if let tree = model.selectedWorktree {
                                 WorktreeDetailView(model: model, tree: tree, onRemove: { removing = tree })
                             } else {
-                                ContentUnavailableView("워크트리를 선택하세요", systemImage: "arrow.triangle.branch",
+                                ContentUnavailableView("워크트리 선택", systemImage: "arrow.triangle.branch",
                                     description: Text("저장소의 브랜치와 개발 작업을 한곳에서 관리합니다."))
                             }
                         }
@@ -74,6 +74,7 @@ struct DashboardView: View {
                     model.terminalPresentation = model.terminalPresentation == .hidden ? .normal : .hidden
                 } label: { Label("터미널 표시 전환", systemImage: "rectangle.bottomthird.inset.filled") }
                     .accessibilityIdentifier("toggleTerminalPanel")
+                languagePicker
             }
         }
         .sheet(item: $creating) { CreateWorktreeSheet(model: model, repository: $0) }
@@ -170,11 +171,24 @@ struct DashboardView: View {
         }
     }
 
+    private var languagePicker: some View {
+        Picker(selection: Binding(get: { AppLanguage.current }, set: { AppLanguage.requestChange(to: $0) })) {
+            Text(verbatim: "English").tag(AppLanguage.english)
+            Text(verbatim: "한국어").tag(AppLanguage.korean)
+        } label: {
+            Label("언어", systemImage: "globe")
+        }
+        .pickerStyle(.menu)
+        .fixedSize()
+        .help("언어")
+        .accessibilityIdentifier("appLanguage")
+    }
+
     @ViewBuilder private var worktreeList: some View {
         if model.settings.repositories.isEmpty {
             ContentUnavailableView {
-                Label("첫 저장소를 등록하세요", systemImage: "folder.badge.plus")
-            } description: { Text("기존 Git 저장소 폴더를 선택하거나 사이드바에 끌어 놓으세요.") }
+                Label("저장소 등록", systemImage: "folder.badge.plus")
+            } description: { Text("기존 Git 저장소 폴더를 선택하거나 사이드바에 끌어 놓기") }
             actions: { Button("폴더 선택") { model.chooseRepository() }.disabled(!model.isLoaded) }
         } else {
             VStack(spacing: 0) {
@@ -211,7 +225,7 @@ struct DashboardView: View {
                 .overlay {
                     if model.visibleWorktrees.isEmpty && model.loadingRepositories.isEmpty {
                         ContentUnavailableView("표시할 워크트리가 없습니다", systemImage: "magnifyingglass",
-                            description: Text("검색 조건과 저장소 경로를 확인하세요."))
+                            description: Text("검색 조건과 저장소 경로 확인"))
                     }
                 }
             }

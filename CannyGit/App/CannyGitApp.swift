@@ -1,6 +1,5 @@
 import SwiftUI
 
-@main
 struct CannyGitApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var delegate
     @State private var model: DashboardModel = {
@@ -38,9 +37,9 @@ private struct WindowCommands: Commands {
     var body: some Commands {
         CommandGroup(after: .newItem) {
             Button("CannyGit 열기") { openWindow(id: "main") }
-            Button("저장소 등록…") { model.chooseRepository() }.keyboardShortcut("o").disabled(!model.isLoaded)
+            Button("저장소 등록") { model.chooseRepository() }.keyboardShortcut("o").disabled(!model.isLoaded)
             Button("새로고침") { Task { await model.refreshAll() } }.keyboardShortcut("r").disabled(!model.isLoaded)
-            Button("명령 팔레트…") {
+            Button("명령 팔레트") {
                 guard NSApp.modalWindow == nil, !NSApp.windows.contains(where: { $0.attachedSheet != nil }) else { return }
                 openWindow(id: "command-palette")
             }.keyboardShortcut("k").disabled(!model.isLoaded)
